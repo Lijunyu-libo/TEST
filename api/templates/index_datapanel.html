@@ -1,0 +1,162 @@
+{#  index_datapanel.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	{{js_res|safe}}
+	{{css_res|safe}}
+    <title>QAS量化分析服务</title>
+  </head>
+  <body>  
+  {% include 'nav-market.html' ignore missing %}
+  <p></p>
+<h5>{{indexcode1}}  {{indexname1}}</h5>
+  <div class="container-fluid">
+		<div class="row">
+		  	<div class="col-sm-6">
+				<p>{{indexcode1}}  {{indexname1}} {{lasttradedate_monthly1}}月线指数走势图</p>
+	  			{{p_script1|safe}}
+				{{p_div1|safe}}
+		  	</div>
+		  	<div class="col-sm-6">
+				<p>{{indexcode1}}  {{indexname1}} {{lasttradedate_weekly1}}周线指数走势图</p>
+	  			{{p_script3|safe}}
+				{{p_div3|safe}}
+		  	</div>
+		</div>
+		<div class="row">
+		  	<div class="col-sm-6">
+				<p>{{indexcode1}}  {{indexname1}} {{lasttradedate_monthly1}}月成交量走势图</p>
+	  			{{p_script2|safe}}
+				{{p_div2|safe}}
+		  	</div>
+		  	<div class="col-sm-6">
+				<p>{{indexcode1}}  {{indexname1}} {{lasttradedate_weekly1}}周成交量走势图</p>
+	  			{{p_script4|safe}}
+				{{p_div4|safe}}
+		  	</div>
+		</div>
+		<div class="row">
+		  	<div class="col-sm-12">
+				<p>{{indexcode1}}  {{indexname1}} {{lasttradedate_daily1}}日线指数走势图</p>
+	  			{{p_script5|safe}}
+				{{p_div5|safe}}
+		  	</div>
+		</div>
+		<div class="row">
+		  	<div class="col-sm-12">
+				<p>{{indexcode1}}  {{indexname1}} {{lasttradedate_daily1}}日成交量走势图</p>
+	  			{{p_script6|safe}}
+				{{p_div6|safe}}
+		  	</div>
+		</div>		
+   </div>
+<p></p>
+<h5>{{indexcode2}}  {{indexname2}}</h5>
+   <div class="container-fluid">
+		<div class="row">
+		  	<div class="col-sm-6">
+				<p>{{indexcode2}}  {{indexname2}} {{lasttradedate_monthly2}}月线指数走势图</p>
+	  			{{p_script7|safe}}
+				{{p_div7|safe}}
+		  	</div>
+		  	<div class="col-sm-6">
+				<p>{{indexcode2}}  {{indexname2}} {{lasttradedate_weekly2}}周线指数走势图</p>
+	  			{{p_script9|safe}}
+				{{p_div9|safe}}
+		  	</div>
+		</div>
+		<div class="row">
+		  	<div class="col-sm-6">
+				<p>{{indexcode2}}  {{indexname2}} {{lasttradedate_monthly2}}月成交量走势图</p>
+	  			{{p_script8|safe}}
+				{{p_div8|safe}}
+		  	</div>
+		  	<div class="col-sm-6">
+				<p>{{indexcode2}}  {{indexname2}} {{lasttradedate_weekly2}}周成交量走势图</p>
+	  			{{p_script10|safe}}
+				{{p_div10|safe}}
+		  	</div>
+		</div>
+		<div class="row">
+		  	<div class="col-sm-12">
+				<p>{{indexcode2}}  {{indexname2}} {{lasttradedate_daily2}}日线指数走势图</p>
+	  			{{p_script11|safe}}
+				{{p_div11|safe}}
+		  	</div>
+		</div>
+		<div class="row">
+		  	<div class="col-sm-12">
+				<p>{{indexcode2}}  {{indexname2}} {{lasttradedate_daily2}}日成交量走势图</p>
+	  			{{p_script12|safe}}
+				{{p_div12|safe}}
+		  	</div>
+		</div>		
+   </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+			$('ul.nav > li').click(function (e) {
+			//e.preventDefault();
+			$('ul.nav > li').removeClass('active');
+			$(this).addClass('active');
+			});
+		});
+		</script>
+<!--     <script type="text/javascript">
+		$(document).ready(function(){
+
+		    $('a').click(function(data){
+		        //请求参数
+		        var data = $(this).text();
+		        //
+		        $.ajax({
+		            //请求方式
+		            type : "get",
+		            //请求的媒体类型
+		            contentType: "application/json",
+		            //请求地址
+		            url : "/index/stocks/"+data,
+		            //数据，json字符串
+		            //data : data,
+		            //请求成功
+		            success : function(result) {
+		            	$("#stockscount").text(result.count.toString());
+						var $tdName = $("<td>1111</td>"); //创建第一个td
+						$("#stocksitem").append($tdName);
+		                //alert(result);
+		            },
+		            //请求失败，包含具体的错误信息
+		            error : function(e){
+		                $("#content").text(e.status);
+		                $("#content").text(e.responseText);
+		            }
+		        });
+		    });
+
+		});
+	</script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

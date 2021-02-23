@@ -1,0 +1,422 @@
+{#  market_index.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	{{js_res|safe}}
+	{{css_res|safe}}
+    <title>QAS量化分析服务</title>
+  </head>
+  <body>  
+  {% include 'nav-market.html' ignore missing %}
+  <div class="container-fluid">
+  <h5>{{indexcode1}}  {{indexname1}} 指数走势分析</h5>
+  		<div class="row">
+		  	<div class="col-sm-3">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今日昨日涨跌</h5>
+			        <p class="card-text">分析短期内市场涨跌</p>
+			        <p>昨日涨跌: {{indexs_data_000001.index_tradedate_1}}  {{indexs_data_000001.index_1}}  {{indexs_data_000001.index_pct_chg_1}}%</p>
+					<p>今日涨跌: {{indexs_data_000001.index_tradedate_0}}  {{indexs_data_000001.index_0}}  {{indexs_data_000001.index_pct_chg_0}}%</p>
+			      </div>
+			    </div>
+		  	</div>
+
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">连续涨跌天数</h5>
+			        <p class="card-text">分析3日内市场连续涨跌行情</p>
+					<p>连续涨跌天数: {{indexs_data_000001.index_updown}}天</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今昨日成交金额差额差额比</h5>
+			        <p class="card-text">分析短期成交金额增减</p>
+					<p>今日成交金额差额 差额比: {{indexs_data_000001.index_amount_chg_0}}亿元 | {{indexs_data_000001.index_amount_chg_pct_0}}%</p>
+					<p>昨日成交金额差额 差额比: {{indexs_data_000001.index_amount_chg_1}}亿元 | {{indexs_data_000001.index_amount_chg_pct_1}}%</p>
+					<p>前日成交金额差额 差额比: {{indexs_data_000001.index_amount_chg_2}}亿元 | {{indexs_data_000001.index_amount_chg_pct_2}}%</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">成交金额连续放量缩量天数</h5>
+			        <p class="card-text">分析3日内市场成交金额连续缩放量行情</p>
+					<p>连续涨跌天数: {{indexs_data_000001.index_amount_updown}}天</p>
+			      </div>
+			    </div>
+		  	</div>
+		  			  			  	
+		</div>
+		<p></p>
+		<div class="row">
+		  	<div class="col-sm-4">
+				<p>{{indexcode1}}  {{indexname1}} 日线指数日平均涨跌幅走势图</p>
+	  			{{p_script1|safe}}
+				{{p_div1|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode1}}  {{indexname1}} 周线指数周平均涨跌幅走势图</p>
+	  			{{p_script2|safe}}
+				{{p_div2|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode1}}  {{indexname1}} 月线指数月平均涨跌幅走势图</p>
+	  			{{p_script3|safe}}
+				{{p_div3|safe}}
+		  	</div>
+		</div>
+		<p></p>
+		<div class="row">
+		  	<div class="col-sm-4">
+				<p>{{indexcode1}}  {{indexname1}} 日成交金额平均差额比走势图</p>
+	  			{{p_script4|safe}}
+				{{p_div4|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode1}}  {{indexname1}} 周成交金额平均差额比走势图</p>
+	  			{{p_script5|safe}}
+				{{p_div5|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode1}}  {{indexname1}} 月成交金额平均差额比走势图</p>
+	  			{{p_script6|safe}}
+				{{p_div6|safe}}
+		  	</div>
+		</div>
+		<hr>
+
+		<br>
+		<h5>{{indexcode2}}  {{indexname2}} 指数走势分析</h5>
+  		<div class="row">
+		  	<div class="col-sm-3">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今日昨日涨跌</h5>
+			        <p class="card-text">分析短期内市场涨跌</p>
+			        <p>昨日涨跌: {{indexs_data_399001.index_tradedate_1}}  {{indexs_data_399001.index_1}}  {{indexs_data_399001.index_pct_chg_1}}%</p>
+					<p>今日涨跌: {{indexs_data_399001.index_tradedate_0}}  {{indexs_data_399001.index_0}}  {{indexs_data_399001.index_pct_chg_0}}%</p>
+			      </div>
+			    </div>
+		  	</div>
+
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">连续涨跌天数</h5>
+			        <p class="card-text">分析3日内市场连续涨跌行情</p>
+					<p>连续涨跌天数: {{indexs_data_399001.index_updown}}天</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今昨日成交金额差额差额比</h5>
+			        <p class="card-text">分析短期成交金额增减</p>
+					<p>今日成交金额差额 差额比: {{indexs_data_399001.index_amount_chg_0}}亿元 | {{indexs_data_399001.index_amount_chg_pct_0}}%</p>
+					<p>昨日成交金额差额 差额比: {{indexs_data_399001.index_amount_chg_1}}亿元 | {{indexs_data_399001.index_amount_chg_pct_1}}%</p>
+					<p>前日成交金额差额 差额比: {{indexs_data_399001.index_amount_chg_2}}亿元 | {{indexs_data_399001.index_amount_chg_pct_2}}%</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">成交金额连续放量缩量天数</h5>
+			        <p class="card-text">分析3日内市场成交金额连续缩放量行情</p>
+					<p>连续涨跌天数: {{indexs_data_399001.index_amount_updown}}天</p>
+			      </div>
+			    </div>
+		  	</div>
+		  			  			  	
+		</div>
+		<p></p>
+		<div class="row">
+		  	<div class="col-sm-4">
+				<p>{{indexcode2}}  {{indexname2}} 日线指数日平均涨跌幅走势图</p>
+	  			{{p_script7|safe}}
+				{{p_div7|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode2}}  {{indexname2}} 周线指数周平均涨跌幅走势图</p>
+	  			{{p_script8|safe}}
+				{{p_div8|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode2}}  {{indexname2}} 月线指数月平均涨跌幅走势图</p>
+	  			{{p_script9|safe}}
+				{{p_div9|safe}}
+		  	</div>
+		</div>
+		<p></p>
+		<div class="row">
+		  	<div class="col-sm-4">
+				<p>{{indexcode2}}  {{indexname2}} 日成交金额平均差额比走势图</p>
+	  			{{p_script10|safe}}
+				{{p_div10|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode2}}  {{indexname2}} 周成交金额平均差额比走势图</p>
+	  			{{p_script11|safe}}
+				{{p_div11|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode2}}  {{indexname2}} 月成交金额平均差额比走势图</p>
+	  			{{p_script12|safe}}
+				{{p_div12|safe}}
+		  	</div>
+		</div>
+
+		<hr>
+		
+		<br>
+		<h5>{{indexcode3}}  {{indexname3}} 指数走势分析</h5>
+  		<div class="row">
+		  	<div class="col-sm-3">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今日昨日涨跌</h5>
+			        <p class="card-text">分析短期内市场涨跌</p>
+			        <p>昨日涨跌: {{indexs_data_399005.index_tradedate_1}}  {{indexs_data_399005.index_1}}  {{indexs_data_399005.index_pct_chg_1}}%</p>
+					<p>今日涨跌: {{indexs_data_399005.index_tradedate_0}}  {{indexs_data_399005.index_0}}  {{indexs_data_399005.index_pct_chg_0}}%</p>
+			      </div>
+			    </div>
+		  	</div>
+
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">连续涨跌天数</h5>
+			        <p class="card-text">分析3日内市场连续涨跌行情</p>
+					<p>连续涨跌天数: {{indexs_data_399005.index_updown}}天</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今昨日成交金额差额差额比</h5>
+			        <p class="card-text">分析短期成交金额增减</p>
+					<p>今日成交金额差额 差额比: {{indexs_data_399005.index_amount_chg_0}}亿元 | {{indexs_data_399005.index_amount_chg_pct_0}}%</p>
+					<p>昨日成交金额差额 差额比: {{indexs_data_399005.index_amount_chg_1}}亿元 | {{indexs_data_399005.index_amount_chg_pct_1}}%</p>
+					<p>前日成交金额差额 差额比: {{indexs_data_399005.index_amount_chg_2}}亿元 | {{indexs_data_399005.index_amount_chg_pct_2}}%</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">成交金额连续放量缩量天数</h5>
+			        <p class="card-text">分析3日内市场成交金额连续缩放量行情</p>
+					<p>连续涨跌天数: {{indexs_data_399005.index_amount_updown}}天</p>
+			      </div>
+			    </div>
+		  	</div>
+		  			  			  	
+		</div>
+		<p></p>
+		<div class="row">
+		  	<div class="col-sm-4">
+				<p>{{indexcode3}}  {{indexname3}} 日线指数日平均涨跌幅走势图</p>
+	  			{{p_script13|safe}}
+				{{p_div13|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode3}}  {{indexname3}} 周线指数周平均涨跌幅走势图</p>
+	  			{{p_script14|safe}}
+				{{p_div14|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode3}}  {{indexname3}} 月线指数月平均涨跌幅走势图</p>
+	  			{{p_script15|safe}}
+				{{p_div15|safe}}
+		  	</div>
+		</div>
+		<p></p>
+		<div class="row">
+		  	<div class="col-sm-4">
+				<p>{{indexcode3}}  {{indexname3}} 日成交金额平均差额比走势图</p>
+	  			{{p_script16|safe}}
+				{{p_div16|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode3}}  {{indexname3}} 周成交金额平均差额比走势图</p>
+	  			{{p_script17|safe}}
+				{{p_div17|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode3}}  {{indexname3}} 月成交金额平均差额比走势图</p>
+	  			{{p_script18|safe}}
+				{{p_div18|safe}}
+		  	</div>
+		</div>	
+
+
+		<hr>
+		
+		<br>
+		<h5>{{indexcode4}}  {{indexname4}} 指数走势分析</h5>
+  		<div class="row">
+		  	<div class="col-sm-3">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今日昨日涨跌</h5>
+			        <p class="card-text">分析短期内市场涨跌</p>
+			        <p>昨日涨跌: {{indexs_data_399006.index_tradedate_1}}  {{indexs_data_399006.index_1}}  {{indexs_data_399005.index_pct_chg_1}}%</p>
+					<p>今日涨跌: {{indexs_data_399006.index_tradedate_0}}  {{indexs_data_399006.index_0}}  {{indexs_data_399006.index_pct_chg_0}}%</p>
+			      </div>
+			    </div>
+		  	</div>
+
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">连续涨跌天数</h5>
+			        <p class="card-text">分析3日内市场连续涨跌行情</p>
+					<p>连续涨跌天数: {{indexs_data_399006.index_updown}}天</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今昨日成交金额差额差额比</h5>
+			        <p class="card-text">分析短期成交金额增减</p>
+					<p>今日成交金额差额 差额比: {{indexs_data_399006.index_amount_chg_0}}亿元 | {{indexs_data_399006.index_amount_chg_pct_0}}%</p>
+					<p>昨日成交金额差额 差额比: {{indexs_data_399006.index_amount_chg_1}}亿元 | {{indexs_data_399006.index_amount_chg_pct_1}}%</p>
+					<p>前日成交金额差额 差额比: {{indexs_data_399006.index_amount_chg_2}}亿元 | {{indexs_data_399006.index_amount_chg_pct_2}}%</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	
+		  	<div class="col-sm-3">
+		  		<div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">成交金额连续放量缩量天数</h5>
+			        <p class="card-text">分析3日内市场成交金额连续缩放量行情</p>
+					<p>连续涨跌天数: {{indexs_data_399006.index_amount_updown}}天</p>
+			      </div>
+			    </div>
+		  	</div>
+		  			  			  	
+		</div>
+		<p></p>
+		<div class="row">
+		  	<div class="col-sm-4">
+				<p>{{indexcode4}}  {{indexname4}} 日线指数日平均涨跌幅走势图</p>
+	  			{{p_script19|safe}}
+				{{p_div19|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode4}}  {{indexname4}} 周线指数周平均涨跌幅走势图</p>
+	  			{{p_script20|safe}}
+				{{p_div20|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode4}}  {{indexname4}} 月线指数月平均涨跌幅走势图</p>
+	  			{{p_script21|safe}}
+				{{p_div21|safe}}
+		  	</div>
+		</div>
+		<p></p>
+		<div class="row">
+		  	<div class="col-sm-4">
+				<p>{{indexcode4}}  {{indexname4}} 日成交金额平均差额比走势图</p>
+	  			{{p_script22|safe}}
+				{{p_div22|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode4}}  {{indexname4}} 周成交金额平均差额比走势图</p>
+	  			{{p_script23|safe}}
+				{{p_div23|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>{{indexcode4}}  {{indexname4}} 月成交金额平均差额比走势图</p>
+	  			{{p_script24|safe}}
+				{{p_div24|safe}}
+		  	</div>
+		</div>
+
+   </div>
+<p></p>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+			$('ul.nav > li').click(function (e) {
+			//e.preventDefault();
+			$('ul.nav > li').removeClass('active');
+			$(this).addClass('active');
+			});
+		});
+		</script>
+<!--     <script type="text/javascript">
+		$(document).ready(function(){
+
+		    $('a').click(function(data){
+		        //请求参数
+		        var data = $(this).text();
+		        //
+		        $.ajax({
+		            //请求方式
+		            type : "get",
+		            //请求的媒体类型
+		            contentType: "application/json",
+		            //请求地址
+		            url : "/index/stocks/"+data,
+		            //数据，json字符串
+		            //data : data,
+		            //请求成功
+		            success : function(result) {
+		            	$("#stockscount").text(result.count.toString());
+						var $tdName = $("<td>1111</td>"); //创建第一个td
+						$("#stocksitem").append($tdName);
+		                //alert(result);
+		            },
+		            //请求失败，包含具体的错误信息
+		            error : function(e){
+		                $("#content").text(e.status);
+		                $("#content").text(e.responseText);
+		            }
+		        });
+		    });
+
+		});
+	</script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

@@ -1,0 +1,130 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow p-3 mb-5 bg-white rounded">
+  <a class="navbar-brand text-danger" href="#">德海勤天·裕策股票量化交易系统-选股策略模块</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/strategy/mainpanel/">主面板</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      成交量策略
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/strategy/last/daily_vol_low_round/5/">最近5日成交量低位走势策略</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/strategy/last/daily_vol_close_low_round/5/">最近5日成交量股价同步圆弧底形态策略</a>
+          <a class="dropdown-item" href="/strategy/last/daily_ma_up_vol_close_low_round/5/">最近5日MA上升成交量股价同步圆弧底形态策略</a>
+        </div>
+      </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      低位策略
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/strategy/last/weekly_low_n/">最近N周线低位走势策略</a>
+          <a class="dropdown-item" href="/strategy/last/daily_low_n/">最近N日线低位走势策略</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/strategy/last/weekly_strongshort_long/10/">周线低位运行N周长阳线突破策略</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      资金流向策略
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/strategy/moneyflow_last_netmfamount_top10/">资金净流入金额TOP10</a>
+          <a class="dropdown-item" href="/strategy/moneyflow_last_buyelgamount_top10/">特大单买入金额TOP10</a>
+          <a class="dropdown-item" href="/strategy/moneyflow_last_buyelgamount_top10/">大单买入金额TOP10</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/strategy/moneyflowtoptogether/">资金流入组合策略</a>
+        </div>
+      </li>
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      涨停板策略
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/strategy/limit_last_strth_top10/">涨停强度TOP10</a>
+          <a class="dropdown-item" href="/strategy/limit_last_fdamount_top10/">封单金额TOP10</a>
+          <a class="dropdown-item" href="/strategy/limit_last_fcratio_top10/">封单金额/当日成交金额TOP10</a>
+          <a class="dropdown-item" href="/strategy/limit_last_flratio_top10/">封单手数/流通股本数TOP10</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/strategy/limit_last_lb1/">首板股票</a>
+          <a class="dropdown-item" href="/strategy/limit_last_lb/2/">二连板股票</a>
+          <a class="dropdown-item" href="/strategy/limit_last_lb/3/">三连板股票</a>
+          <a class="dropdown-item" href="/strategy/limit_last_lb/4/">四连板股票</a>
+          <a class="dropdown-item" href="/strategy/limit_last_lb/5/">五连板股票</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/strategy/moneyflowtoptogether/">涨停组合策略</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      MA均线策略
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/strategy/ma_stick/">最近N交易日个股日线MA粘合策略</a>
+          <a class="dropdown-item" href="/strategy/ma_ma5upma10/">最近交易日个股日线MA5上穿MA10策略</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/strategy/mastickup/">MA走势组合策略mastickup</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      每日指标策略
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/strategy/dailybasic_last_turnover_top100/">最近交易日个股换手率TOP100</a>
+          <a class="dropdown-item" href="/strategy/dailybasic_last_volumeratio_top100/">最近交易日个股量比TOP100</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/strategy/dailybasic_last_turnover_between/">最近交易日位于设定区间换手率策略</a>
+          <a class="dropdown-item" href="/strategy/dailybasic_last_volumeratio_between/">最近交易日位于设定区间量比策略</a>
+        </div>
+      </li>
+<!--       <li class="nav-item">
+  <a class="nav-link" href="#">估值策略</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#">成长策略</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#">盈利能力策略</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#">交投策略</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#">规模策略</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#">股价波动策略</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#">预测策略</a>
+</li> -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          策略计算
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/cal/strategy/ma_stick/">最近N交易日个股日线MA粘合策略</a>
+          <a class="dropdown-item" href="/cal/strategy/ma_ma5upma10/">最近交易日个股日线MA5上穿MA10策略</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/cal/strategy/mastickup/">MA走势组合策略 mastickup 计算</a>
+        </div>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      数据量化·策略分析·模拟回测·实盘交易
+    </span>
+    
+<!--     <form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form> -->
+  </div>
+</nav>

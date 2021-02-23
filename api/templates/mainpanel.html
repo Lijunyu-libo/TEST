@@ -1,0 +1,366 @@
+{#  mainpanel.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  {{js_res|safe}}
+  {{css_res|safe}}
+    <title>SQAS·证券量化分析系统</title>
+  </head>
+  <body>  
+  {% include 'nav.html' ignore missing %}
+  <div class="container-fluid">
+    
+    <h5 class = "p-md-2 " style ="border-left:solid 5px green;  ">  QDS 数据量化</h5>
+<!--     <nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-success text-white">
+    <li class="breadcrumb-item"><a href="#">data</a></li>
+    <li class="breadcrumb-item active" aria-current="page">index</li>
+  </ol>
+</nav> -->
+    <div class="row">
+      
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header bg-success text-white">指数数据 index</div>
+            <div class="card-body">
+            <!-- <h5 class="card-title">指数数据 index</h5> -->
+            <!-- <div class="dropdown-divider"></div> -->
+              <p><a href="/indexs/daily/" target="_blank">沪深日指数</a></p>
+              <p><a href="/indexs/weekly/" target="_blank">沪深周指数</a></p>
+              <p><a href="/indexs/monthly/" target="_blank">沪深月指数</a></p>             
+              <p><a href="/indexs/volume/" target="_blank">沪深日成交量</a></p>
+              <p><a href="/indexs/volume/weekly/" target="_blank">沪深周成交量</a></p>
+              <p><a href="/indexs/volume/monthly/" target="_blank">沪深月成交量</a></p>
+              <p><a href="/indexs/sw/last/" target="_blank">申万行业指数</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header bg-success text-white">行业数据 industry</div>
+            <div class="card-body">
+              <!-- <h5 class="card-title"></h5> -->
+              <!-- <div class="dropdown-divider"></div>  -->             
+              <p><a href="/industry/three/" target="_blank">三大产业分类</a></p>
+              <p><a href="/industry/category/" target="_blank">行业分类（含证监会、申万1-3级、申万概念）</a></p>
+              <p><a href="/industry/analysis/category/" target="_blank">行业涨跌（含证监会、申万1-3级、申万概念）</a></p>
+              <p><a href="/stocks/concept/" target="_blank">概念分类</a></p>
+              <p><a href="/stocks/sw/swl1/" target="_blank">申万一级分类</a></p>
+              <p><a href="/stocks/sw/swl2/" target="_blank">申万二级分类</a></p>
+              <p><a href="/stocks/sw/swl3/" target="_blank">申万三级分类</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header bg-success text-white">资金流向数据 moneyflow</div>
+            <div class="card-body">
+<!--               <h5 class="card-title"></h5>
+           <div class="dropdown-divider"></div>    -->           
+              <p><a href="/moneyflow/lastday/" target="_blank">最近交易日资金流向数据</a></p>
+              <p><a href="/moneyflow/lastweek/" target="_blank">最近交易周资金流向数据</a></p>
+              <p><a href="/moneyflow/lastmonth/" target="_blank">最近交易月资金流向数据</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header bg-success text-white">公司财务数据 finance</div>
+            <div class="card-body">
+<!--               <h5 class="card-title">公司财务数据 finance</h5>
+             <div class="dropdown-divider"></div>  -->             
+              <p><a href="/stocks/fina/forecast/20200331/" target="_blank">20200331季度财务预告数据</a></p>
+              <p><a href="/stocks/fina/forecast/20200630/" target="_blank">20200630季度财务预告数据</a></p>
+              <p><a href="/stocks/fina/forecast/20200930/" target="_blank">20200930季度财务预告数据</a></p>
+              <p><a href="/stocks/fina/forecast/20201231/" target="_blank">20201231季度财务预告数据</a></p>
+              <p><a href="/stocks/fina/float/year/" target="_blank">*2020年交易日限售股解禁数据</a></p>
+              <p><a href="/stocks/fina/float/last/" target="_blank">*近十日内限售股解禁数据</a></p>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+    <br>        
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header bg-success text-white">个股行情数据 stocks</div>
+            <div class="card-body">
+<!--               <h5 class="card-title"></h5>
+<div class="dropdown-divider"></div> -->
+              <p><a href="/stocks/dailybasic/lastday/" target="_blank">个股每日基本信息数据</a></p> 
+              <p><a href="/stocks/daily/lastday/" target="_blank">个股日行情数据</a></p>
+              <p><a href="/stocks/weekly/last/" target="_blank">个股周行情数据</a></p>
+              <p><a href="/stocks/monthly/last/" target="_blank">个股月行情数据</a></p>
+              <p><a href="/stocks/limit/last/" target="_blank">个股涨跌停数据</a></p>
+                                          
+            </div>
+          </div>
+        </div>        
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header bg-success text-white">个股指标数据 stockindexs</div>
+            <div class="card-body">              
+<!--               <h5 class="card-title"></h5>
+            <div class="dropdown-divider"></div>  
+
+            -->
+              <div class="row">
+                <div class="col">
+                  <p><a href="/stock/ma/000001.SZ/" target="_blank">MA</a></p>            
+                  <p><a href="/stock/macd/000001.SZ/" target="_blank">MACD</a></p>
+                  <p><a href="/stock/boll/000001.SZ/" target="_blank">BOLL</a></p>
+                </div>
+                <div class="col">
+                  <p><a href="/stock/kdj/000001.SZ/" target="_blank">KDJ</a></p>
+                  <p><a href="/stock/cci/000001.SZ/" target="_blank">CCI</a></p>
+                  <p><a href="/stock/rsi/000001.SZ/" target="_blank">RSI</a></p>
+                </div>
+                <div class="col">
+                  <p><a href="/stock/mtm/000001.SZ/" target="_blank">MTM</a></p>
+                  <p><a href="/stock/obv/000001.SZ/" target="_blank">OBV</a></p>
+                  <p><a href="/stock/vrsi/000001.SZ/" target="_blank">VRSI</a></p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header bg-success text-white">实时行情数据 realtime</div>
+            <div class="card-body">
+<!--               <h5 class="card-title"></h5>
+<div class="dropdown-divider"></div>  -->
+              <p><a href="/stocks/fina/float/last/" target="_blank">*实时5分钟K线数据</a></p>
+              <p><a href="/stocks/fina/float/last/" target="_blank">*实时日K线数据</a></p>
+              <p><a href="/stocks/fina/float/last/" target="_blank">*实时涨跌停数据</a></p>                         
+            </div>
+          </div>
+        </div>           
+
+    </div>
+
+    <br>        
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header bg-success text-white">新闻舆情数据 news</div>
+            <div class="card-body">
+<!--               <h5 class="card-title">新闻舆情数据 news</h5>
+              <div class="dropdown-divider"></div> -->              
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header bg-success text-white">宏观指标数据 marco</div>
+              <div class="card-body">
+  <!--               <h5 class="card-title>宏观指标数据 marco</h5>
+                             <div class="dropdown-divider"></div>  -->                           
+              </div>
+            </div>
+        </div> 
+
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header bg-success text-white">外围市场数据 foreign</div>
+              <div class="card-body">
+<!--                 <h5 class="card-title">外围市场数据 foreign</h5>
+             <div class="dropdown-divider"></div>  -->             
+                
+              </div>
+          </div>
+        </div>                  
+                      
+    </div>
+    <br>
+
+<hr>
+<br>
+<h5 class = "p-md-2 " style ="border-left:solid 5px purple;  ">  DAS  数据分析</h5>
+<!--     <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">analysis</a></li>
+    <li class="breadcrumb-item active" aria-current="page">market</li>
+  </ol>
+</nav> -->
+    <div class="row">     
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header text-white" style ="background-color:purple;">市场周期分析模块 market</div>
+            <div class="card-body">
+<!--               <h5 class="card-title">市场周期分析模块 market</h5>
+<div class="dropdown-divider"></div> -->
+              <p><a href="/market/indexs/" target="_blank">市场指数成交量分析</a></p>
+              <p><a href="/market/industry/calendar/" target="_blank">行业热点日历</a></p>
+              <p><a href="/market/industry/year/" target="_blank">行业热点轮动</a></p>
+              <p><a href="/market/concept/calendar/" target="_blank">概念热点日历</a></p>
+              <p><a href="/market/concept/year/" target="_blank">概念热点轮动</a></p>              
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header text-white" style ="background-color:purple;">行业分析模块 industry</div>
+            <div class="card-body">
+              <p><a href="/industry/analysis/up/close/" target="_blank">行业股价分析</a></p>
+              <p><a href="/industry/analysis/up/vol/" target="_blank">行业成交量分析</a></p>
+              <p><a href="/industry/analysis/up/vc/3/" target="_blank">行业量价分析</a></p>
+              <p><a href="/industry/analysis/realtime/" target="_blank">实时行业量价分析</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header text-white" style ="background-color:purple;">资金分析模块 money</div>
+            <div class="card-body">
+            <p><a href="/stocks/moneyflow/last/" target="_blank">资金流向数据</a></p>
+              <p><a href="/market/hsgt/" target="_blank">南北向资金分析</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header text-white" style ="background-color:purple;">个股行情分析模块 stocks</div>
+            <div class="card-body">
+              <p><a href="/market/limitstocks/" target="_blank">涨跌停个股数分析</a></p>
+            </div>
+          </div>
+        </div>
+                       
+    </div>
+
+    <br>
+
+    <div class="row">     
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header text-white" style ="background-color:purple;">个股指标分析模块 stocksindex</div>
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col">
+                  <p><a href="/stock/ma/000001.SZ/" target="_blank">MA</a></p>            
+                  <p><a href="/stock/macd/000001.SZ/" target="_blank">MACD</a></p>
+                  <p><a href="/stock/boll/000001.SZ/" target="_blank">BOLL</a></p>
+                </div>
+                <div class="col">
+                  <p><a href="/stock/kdj/000001.SZ/" target="_blank">KDJ</a></p>
+                  <p><a href="/stock/cci/000001.SZ/" target="_blank">CCI</a></p>
+                  <p><a href="/stock/rsi/000001.SZ/" target="_blank">RSI</a></p>
+                </div>
+                <div class="col">
+                  <p><a href="/stock/mtm/000001.SZ/" target="_blank">MTM</a></p>
+                  <p><a href="/stock/obv/000001.SZ/" target="_blank">OBV</a></p>
+                  <p><a href="/stock/vrsi/000001.SZ/" target="_blank">VRSI</a></p>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+    </div> 
+
+    <br>
+    <hr>
+<br>
+<h5 class = "p-md-2 " style ="border-left:solid 5px red;  ">  TS  交易</h5>   
+    <div class="row">
+      
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card shadow bg-white rounded">
+            <div class="card-header text-white" style ="background-color:red;">下单模块 order</div>
+            <div class="card-body">
+            <!-- <h5 class="card-title">指数数据 index</h5> -->
+            <!-- <div class="dropdown-divider"></div> -->
+              <p><a href="/order/analysis/" target="_blank">下单分析</a></p>
+
+            </div>
+          </div>
+        </div>
+   </div>
+<p></p>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+          $('#goToTop a').click(function(){
+              $('html,body').animate({scrollTop:0},'slow');
+          });
+      });
+  </script>
+      <script>
+    function indexBut(a){
+      var indexcode = $(a).attr("data-name");
+      $("#content").text(indexcode);
+    }
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+      $('ul.nav > li').click(function (e) {
+      //e.preventDefault();
+      $('ul.nav > li').removeClass('active');
+      $(this).addClass('active');
+      });
+    });
+    </script>
+<!--     <script type="text/javascript">
+    $(document).ready(function(){
+
+        $('a').click(function(data){
+            //请求参数
+            var data = $(this).text();
+            //
+            $.ajax({
+                //请求方式
+                type : "get",
+                //请求的媒体类型
+                contentType: "application/json",
+                //请求地址
+                url : "/index/stocks/"+data,
+                //数据，json字符串
+                //data : data,
+                //请求成功
+                success : function(result) {
+                  $("#stockscount").text(result.count.toString());
+            var $tdName = $("<td>1111</td>"); //创建第一个td
+            $("#stocksitem").append($tdName);
+                    //alert(result);
+                },
+                //请求失败，包含具体的错误信息
+                error : function(e){
+                    $("#content").text(e.status);
+                    $("#content").text(e.responseText);
+                }
+            });
+        });
+
+    });
+  </script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

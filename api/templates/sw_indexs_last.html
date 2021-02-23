@@ -1,0 +1,148 @@
+{#  sw_stocks.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.14.0/js/fontawesome.min.js"></script>
+	<link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.js"></script>
+	<link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/extensions/fixed-columns/bootstrap-table-fixed-columns.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/extensions/fixed-columns/bootstrap-table-fixed-columns.min.js"></script>
+    <title>QAS量化分析服务</title>
+  </head>
+  <body>  
+  {% include 'nav-market.html' ignore missing %}
+  <div class="container-fluid">  
+		<div class="row">
+		  	<div class="col-sm-12">
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">申万行业指数（最近交易日）   <span class="badge badge-secondary">{{stockscount}}</span>
+			        <!-- <span id="stockscount"></span> -->
+			        </h5>
+			        <table class="table table-hover"
+			           data-toggle="table"  //启用bootstrap表格
+			           data-classes="table table-hover"
+			           data-show-columns="false"  //是否显示内容列下拉框。
+			           data-striped="true"  //设置为 true 会有隔行变色效果
+			           data-show-toggle="false" //是否显示切换视图（table/card）按钮。
+			           data-search="true" //是否显示搜索框
+			           data-show-refresh="false" //是否显示刷新按钮
+			           data-toolbar="#toolbar"  //工具栏
+			           data-height="1000"  //设置表格高度-固定表头生效
+			        >
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">行业指数代码</th>					      
+					      <th scope="col">行业指数名称</th>
+					      <th scope="col">交易日</th>
+					      <th scope="col">开盘</th>
+					      <th scope="col">最低</th>
+					      <th scope="col">最高</th>
+					      <th scope="col">收盘</th>
+					      <th scope="col">涨跌</th>
+					      <th scope="col" data-sortable="true">涨跌幅</th>
+					      <th scope="col" data-sortable="true">成交量</th>
+					      <th scope="col" data-sortable="true">成交金额</th>
+					      <th scope="col" data-sortable="true">市盈率PE</th>
+					      <th scope="col" data-sortable="true">市净率PB</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+ 					{% for item in stocks %}
+					    <tr>
+					      	<th scope="row">{{loop.index}}</th>
+					      	<td><a href="/indexs/sw/daily/{{item.ts_code}}/">{{item.ts_code}}</a></td>
+					      	<td>{{item.index_name}}</td>
+					      	<td>{{item.trade_date}}</td>
+					      	<td>{{item.open}}</td>
+					      	<td>{{item.low}}</td>
+					      	<td>{{item.high}}</td>
+					      	<td>{{item.close}}</td>
+					      	<td>{{item.change}}</td>
+							<td>{{item.pct_change}}</td>
+					      	<td>{{item.vol}}</td>
+					      	<td>{{item.amount}}</td>
+					      	<td>{{item.pe}}</td>
+					      	<td>{{item.pb}}</td>
+					    </tr>
+					{% endfor%} 
+						<!-- <tr id="stocksitem">						
+						</tr> -->
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go Top</a>
+			      </div>
+			    </div>
+		  	</div>
+	</div>
+   </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+			$('ul.nav > li').click(function (e) {
+			//e.preventDefault();
+			$('ul.nav > li').removeClass('active');
+			$(this).addClass('active');
+			});
+		});
+		</script>
+<!--     <script type="text/javascript">
+		$(document).ready(function(){
+
+		    $('a').click(function(data){
+		        //请求参数
+		        var data = $(this).text();
+		        //
+		        $.ajax({
+		            //请求方式
+		            type : "get",
+		            //请求的媒体类型
+		            contentType: "application/json",
+		            //请求地址
+		            url : "/index/stocks/"+data,
+		            //数据，json字符串
+		            //data : data,
+		            //请求成功
+		            success : function(result) {
+		            	$("#stockscount").text(result.count.toString());
+						var $tdName = $("<td>1111</td>"); //创建第一个td
+						$("#stocksitem").append($tdName);
+		                //alert(result);
+		            },
+		            //请求失败，包含具体的错误信息
+		            error : function(e){
+		                $("#content").text(e.status);
+		                $("#content").text(e.responseText);
+		            }
+		        });
+		    });
+
+		});
+	</script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

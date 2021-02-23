@@ -1,0 +1,183 @@
+{#  market_snmoneyflow.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	{{js_res|safe}}
+	{{css_res|safe}}
+    <title>QAS量化分析服务</title>
+  </head>
+  <body>  
+  {% include 'nav-market.html' ignore missing %}
+  <div class="container-fluid">
+  <h5>南北向资金流动分析</h5>
+  		<div class="row">
+		  	<div class="col-sm-6">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">南向资金金额差额（万元）\ 比值 </h5>
+			        <p class="card-text">分析今日南向资金金额增减情况 </p>
+			        <p>{{hsgt_data.hsgt_tradedate_0}}  |  
+			        南向:{{hsgt_data.hsgt_south_money_chg_0}}  {{hsgt_data.hsgt_south_money_chg_pct_0}}%  |  港股通上海:{{hsgt_data.hsgt_ggt_ss_money_chg_0}}  {{hsgt_data.hsgt_ggt_ss_money_chg_pct_0}}%  |  
+			        港股通深圳:{{hsgt_data.hsgt_ggt_sz_money_chg_0}}  {{hsgt_data.hsgt_ggt_sz_money_chg_pct_0}}%
+			        </p>
+			        <p>{{hsgt_data.hsgt_tradedate_1}}  |  
+			        南向:{{hsgt_data.hsgt_south_money_chg_1}}  {{hsgt_data.hsgt_south_money_chg_pct_1}}%  |  港股通上海:{{hsgt_data.hsgt_ggt_ss_money_chg_1}}  {{hsgt_data.hsgt_ggt_ss_money_chg_pct_1}}%  |  
+			        港股通深圳:{{hsgt_data.hsgt_ggt_sz_money_chg_1}}  {{hsgt_data.hsgt_ggt_sz_money_chg_pct_1}}%
+			        </p>
+			      </div>
+			    </div>
+		  	</div>
+		  	<div class="col-sm-6">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">北向资金金额差额（万元）\ 比值 </h5>
+			        <p class="card-text">分析今日北向资金金额增减情况 </p>
+			        <p>{{hsgt_data.hsgt_tradedate_0}}  |  
+			        北向:{{hsgt_data.hsgt_north_money_chg_0}}  {{hsgt_data.hsgt_north_money_chg_pct_0}}%  |  沪港通:{{hsgt_data.hsgt_hgt_money_chg_0}}  {{hsgt_data.hsgt_hgt_money_chg_pct_0}}%  |  
+			        深港通:{{hsgt_data.hsgt_sgt_money_chg_0}}  {{hsgt_data.hsgt_sgt_money_chg_pct_0}}%
+			        </p>
+			        <p>{{hsgt_data.hsgt_tradedate_1}}  |  
+			        北向:{{hsgt_data.hsgt_north_money_chg_1}}  {{hsgt_data.hsgt_north_money_chg_pct_1}}%  |  沪港通:{{hsgt_data.hsgt_hgt_money_chg_1}}  {{hsgt_data.hsgt_hgt_money_chg_pct_1}}%  |  
+			        深港通:{{hsgt_data.hsgt_sgt_money_chg_1}}  {{hsgt_data.hsgt_sgt_money_chg_pct_1}}%
+			        </p>
+			      </div>
+			    </div>
+		  	</div>		  			  			  	
+		</div>
+
+		<br>
+		<h5>南北向资金连续放量缩量天数</h5>
+  		<div class="row">
+		  	<div class="col-sm-6">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">南向资金连续放量缩量天数 </h5>
+			        <p class="card-text">分析3日内市场南向资金成交金额连续缩放量情况 </p>
+			        <p>{{hsgt_data.hsgt_tradedate_0}}  |  
+			        南向: {{hsgt_data.hsgt_south_money_updown}}  |  港股通上海: {{hsgt_data.hsgt_ggt_ss_money_updown}}  |   
+			        港股通深圳: {{hsgt_data.hsgt_ggt_sz_money_updown}}
+			        </p>
+			      </div>
+			    </div>
+		  	</div>
+		  	<div class="col-sm-6">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">北向资金连续放量缩量天数 </h5>
+			        <p class="card-text">分析3日内市场北向资金成交金额连续缩放量情况</p>
+			        <p>{{hsgt_data.hsgt_tradedate_0}}  |  
+			        北向: {{hsgt_data.hsgt_north_money_updown}}  |  沪港通: {{hsgt_data.hsgt_hgt_money_updown}}  |    
+			        深港通: {{hsgt_data.hsgt_sgt_money_updown}}
+			        </p>
+			      </div>
+			    </div>
+		  	</div>		  			  			  	
+		</div>
+		<br>
+		<hr>
+		<h5>南北向资金成交金额较5日平均值差额</h5>
+		<div class="row">
+		  	<div class="col-sm-4">
+				<p>5日南向资金成交金额较5日平均值差额</p>
+	  			{{p_script1|safe}}
+				{{p_div1|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>5日港股通 上海资金成交较5日平均值波动情况</p>
+	  			{{p_script2|safe}}
+				{{p_div2|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>5日港股通 深圳资金成交较5日平均值波动情况</p>
+	  			{{p_script3|safe}}
+				{{p_div3|safe}}
+		  	</div>		  	
+		</div>
+		<br>
+		<div class="row">
+		  	<div class="col-sm-4">
+				<p>5日北向资金成交金额较5日平均值差额</p>
+	  			{{p_script4|safe}}
+				{{p_div4|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>5日沪港通资金成交较5日平均值波动情况</p>
+	  			{{p_script5|safe}}
+				{{p_div5|safe}}
+		  	</div>
+		  	<div class="col-sm-4">
+				<p>5日深港通资金成交较5日平均值波动情况</p>
+	  			{{p_script6|safe}}
+				{{p_div6|safe}}
+		  	</div>		  	
+		</div>
+   </div>
+<p></p>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+			$('ul.nav > li').click(function (e) {
+			//e.preventDefault();
+			$('ul.nav > li').removeClass('active');
+			$(this).addClass('active');
+			});
+		});
+		</script>
+<!--     <script type="text/javascript">
+		$(document).ready(function(){
+
+		    $('a').click(function(data){
+		        //请求参数
+		        var data = $(this).text();
+		        //
+		        $.ajax({
+		            //请求方式
+		            type : "get",
+		            //请求的媒体类型
+		            contentType: "application/json",
+		            //请求地址
+		            url : "/index/stocks/"+data,
+		            //数据，json字符串
+		            //data : data,
+		            //请求成功
+		            success : function(result) {
+		            	$("#stockscount").text(result.count.toString());
+						var $tdName = $("<td>1111</td>"); //创建第一个td
+						$("#stocksitem").append($tdName);
+		                //alert(result);
+		            },
+		            //请求失败，包含具体的错误信息
+		            error : function(e){
+		                $("#content").text(e.status);
+		                $("#content").text(e.responseText);
+		            }
+		        });
+		    });
+
+		});
+	</script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

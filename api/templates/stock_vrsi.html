@@ -1,0 +1,147 @@
+{#  stock_daily.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	{{js_res|safe}}
+	{{css_res|safe}}
+    <title>VRSI</title>
+  </head>
+  <body>  
+  {% include 'nav-data.html' ignore missing %}
+  <div class="container-fluid">
+	  	<p>{{stockcode}}  {{indexname}} 日线VRSI走势图</p>
+	  	{{p_script|safe}}
+		{{p_div|safe}}
+		<div class="row">
+		  	<div class="col-sm-12">
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">{{stock_dailybasic.stockcode}}  {{stock_dailybasic.stockname}}  {{stock_dailybasic.area}}   {{stock_dailybasic.industry}}  <span class="badge badge-secondary">{{stockdailycount}}</span>
+			        <!-- <span id="stockscount"></span> -->
+			        </h5>
+			        <P>名称：VRSI 量相对强弱指标(Vol Relative Strength Index)</P>
+			        <p>公式：VRS = N日内成交量增加幅度总和 / N日内成交量减少幅度总和; VRSI=100-100÷(1+VRS) ;N取6 12 24</p>
+			        <P>原理：与相对强弱指标RSI相比，计算方法和判断原理基本相同，但它重点考虑了量的因素，根据量比价先行的道理，能较好地超前判断价格走势。</P>
+			        <P>技巧：VRSI以50为强弱分界线，VRSI大于50为强势市场，VRSI小于50为弱势市场，VRSI在50以上准确性较高。盘整时，VRSI一底比一底高，表示多头势强，后市可能继续上涨；反之反之一底比一底低是卖出信号。VRSI的超买超卖分析：6日VRSI向上突破85，超买；6日VRSI向下跌破15，超卖，出现反转的可能性较大。在超买区走出M形是常见的见顶形态；在超卖区走出W形是常见的见底形态。VRSI的参数值N一般取5～16日。N值愈大长期趋势愈明朗，但会有反应滞后倾向；N值愈小对趋势变化愈敏感，但易产生灵敏度过高的风险。</P>
+			        <p></p>
+			        <table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">交易日</th>
+					      <th scope="col">代码</th>
+<!-- 					      <th scope="col">名称</th>
+					      <th scope="col">区域</th>
+					      <th scope="col">行业</th> -->					      
+					      <th scope="col">收盘</th>
+					      <th scope="col">开盘</th>
+					      <th scope="col">最高</th>
+					      <th scope="col">最低</th>
+					      <th scope="col" >涨跌幅（%）</th>
+					      <th scope="col" >成交量（手）</th>
+					      <th scope="col" >成交额（千元）</th>
+					      <th scope="col">VRSI6</th>
+					      <th scope="col">VRSI12</th>
+					      <th scope="col">VRSI24</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+ 					{% for item in stockdaily %}
+					    <tr>
+					      	<th scope="row">{{loop.index}}</th>
+					      	<td>{{item.trade_date}}</td>
+					      	<td>{{item.ts_code}}</td>
+<!-- 					      	<td>{{item.stockname}}</td>
+				      	<td>{{item.area}}</td>
+				      	<td>{{item.industry}}</td>	 -->				      	
+
+					      	<td>{{item.close}}</td>
+					      	<td>{{item.open}}</td>
+					      	<td>{{item.high}}</td>
+					      	<td>{{item.low}}</td>
+					      	<td>{{item.pct_chg}}</td>
+					      	<td>{{item.vol}}</td>
+							<td>{{item.amount}}</td>
+ 					      	<td>{{item.VRSI6}}</td>
+ 					      	<td>{{item.VRSI12}}</td>
+ 					      	<td>{{item.VRSI24}}</td>
+
+					{% endfor%} 
+						<!-- <tr id="stocksitem">						
+						</tr> -->
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go Top</a>
+			      </div>
+			    </div>
+		  	</div>
+	</div>
+   </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+			$('ul.nav > li').click(function (e) {
+			//e.preventDefault();
+			$('ul.nav > li').removeClass('active');
+			$(this).addClass('active');
+			});
+		});
+		</script>
+<!--     <script type="text/javascript">
+		$(document).ready(function(){
+
+		    $('a').click(function(data){
+		        //请求参数
+		        var data = $(this).text();
+		        //
+		        $.ajax({
+		            //请求方式
+		            type : "get",
+		            //请求的媒体类型
+		            contentType: "application/json",
+		            //请求地址
+		            url : "/index/stocks/"+data,
+		            //数据，json字符串
+		            //data : data,
+		            //请求成功
+		            success : function(result) {
+		            	$("#stockscount").text(result.count.toString());
+						var $tdName = $("<td>1111</td>"); //创建第一个td
+						$("#stocksitem").append($tdName);
+		                //alert(result);
+		            },
+		            //请求失败，包含具体的错误信息
+		            error : function(e){
+		                $("#content").text(e.status);
+		                $("#content").text(e.responseText);
+		            }
+		        });
+		    });
+
+		});
+	</script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

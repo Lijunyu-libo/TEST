@@ -1,0 +1,336 @@
+{#  dailybasic_stocks.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+    <title>QAS量化分析服务</title>
+  </head>
+  <body>  
+  {% include 'nav-data.html' ignore missing %}
+  <div class="container-fluid">
+    		<div class="row">
+  			<div class="col-sm-2">
+			    <div class="card">
+			      <div class="card-body">
+			        <!-- <h5 class="card-title">净利润筛选</h5> -->
+					<form  action="/stocks/dailybasic/lastday/stockcode/" method="POST">
+				  	<div class="form-group">
+				    	<label for="stockcode">股票代码</label>
+				    	<input type="text" class="form-control" id="stockcode" name="stockcode" >
+				  	</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="submit" class="btn btn-primary" >Search</button>
+      			</div>
+				  </form>
+			    </div>
+			</div>
+			<div class="col-sm-2">
+			    <div class="card">
+			      <div class="card-body">
+			        <!-- <h5 class="card-title">净利润筛选</h5> -->
+					<form  action="/stocks/dailybasic/lastday/mvless/" method="POST">
+				  	<div class="form-group">
+				    	<label for="mv">流通市值小于（万元）</label>
+				    	<input type="text" class="form-control" id="mv" name="mv" >
+				  	</div>
+
+			      </div>
+			      <div class="modal-footer">
+			        <button type="submit" class="btn btn-primary" >Search</button>
+      			</div>
+				  </form>
+			    </div>
+			</div>
+			<div class="col-sm-2">
+			    <div class="card">
+			      <div class="card-body">
+			        <!-- <h5 class="card-title">净利润筛选</h5> -->
+					<form  action="/stocks/dailybasic/lastday/turnovergreateq/" method="POST">
+				  	<div class="form-group">
+				    	<label for="turnover">换手率大于等于（%）</label>
+				    	<input type="text" class="form-control" id="turnover" name="turnover" >
+				  	</div>
+
+			      </div>
+			      <div class="modal-footer">
+			        <button type="submit" class="btn btn-primary" >Search</button>
+      			</div>
+				  </form>
+			    </div>
+			</div>
+			<div class="col-sm-2">
+			    <div class="card">
+			      <div class="card-body">
+			        <!-- <h5 class="card-title">净利润筛选</h5> -->
+					<form  action="/stocks/dailybasic/lastday/turnoverbetween/" method="POST">
+				  	<div class="form-group">
+				    	<label for="turnovergte">换手率大于等于 （%）</label>
+				    	<input type="text" class="form-control" id="turnovergte" name="turnovergte" >
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="turnoverlte">换手率小于等于 （%）</label>
+				    	<input type="text" class="form-control" id="turnoverlte" name="turnoverlte" >
+				  	</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="submit" class="btn btn-primary" >Search</button>
+      			</div>
+				  </form>
+			    </div>
+			</div>
+		</div>
+		<p></p>    
+		<div class="row">
+		  	<div class="col-sm-12">
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">{{tradeday}}全市场基本数据    <span class="badge badge-secondary">{{stockscount}}</span>
+			        <!-- <span id="stockscount"></span> -->
+			        </h5>
+			        <table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>					      
+					      <th scope="col">代码</th>
+					      <th scope="col" style="width: 200">名称</th>
+					      <th scope="col">行业</th>
+					      <th scope="col">日期</th>
+					      <th scope="col">收盘</th>
+					      <th scope="col">换手</th>
+					      <th scope="col">换手/自</th>
+					      <th scope="col">量比</th>
+					      <!-- <th scope="col">市盈</th> -->
+					      <th scope="col">市盈T</th>
+					      <th scope="col">市净</th>
+					      <!-- <th scope="col">市销</th> -->
+					      <th scope="col">市销T</th>
+					     <!--  <th scope="col">股息</th> -->
+					      <th scope="col">股息/T</th>
+					      <th scope="col">总股本</th>
+					      <th scope="col">流通股本</th>
+					      <th scope="col">自由流通股本</th>
+					      <th scope="col">总市值</th>
+					      <th scope="col">流通市值</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+ 					{% for item in stocks %}
+					    <tr>
+					      	<th scope="row">{{loop.index}}</th>
+					      	<td>{{item.ts_code}}</td>
+					      	<td style="width: 200">{{item.name}}</td>
+					      	<td>{{item.industry}}</td>
+					      	<td>{{item.trade_date}}</td>
+					      	<td>{{item.close}}</td>
+					      	<td>{{item.turnover_rate}}</td>
+					      	<td>{{item.turnover_rate_f}}</td>
+					      	<td>{{item.volume_ratio}}</td>
+					      <!-- 	<td>{{item.pe}}</td> -->
+					      	<td>{{item.pe_ttm}}</td>
+					      	<td>{{item.pb}}</td>
+					      	<!-- <td>{{item.ps}}</td> -->
+					      	<td>{{item.ps_ttm}}</td>
+					      	<!-- <td>{{item.dv_ratio}}</td> -->
+					      	<td>{{item.dv_ttm}}</td>
+					      	<td>{{item.total_share}}</td>
+					      	<td>{{item.float_share}}</td>
+					      	<td>{{item.free_share}}</td>
+					      	<td>{{item.total_mv}}</td>
+					      	<td>{{item.circ_mv}}</td>
+					    </tr>
+					{% endfor%} 
+						<!-- <tr id="stocksitem">						
+						</tr> -->
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go Top</a>
+			      </div>
+			    </div>
+		  	</div>
+	</div>
+   </div>
+   <!-- Modal -->
+<div class="modal fade" id="topstockEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<!-- <form action="/topstock/save/" method="post"> -->
+        <form id="topstockForm">
+		  <div class="form-group">
+		    <label for="stockcode">股票代码</label>
+		    <input type="text" class="form-control" id="stockcode" name="stockcode" readonly>
+		  </div>
+		  <div class="form-group">
+		    <label for="stockname">股票名称</label>
+		    <input type="text" class="form-control" id="stockname" readonly>
+		  </div>
+		  <div class="form-group">
+		    <label for="conceptname">概念</label>
+		    <input type="text" class="form-control" id="conceptname" readonly>
+		  </div>
+		  <div class="form-check">		  	
+		    <input type="checkbox" class="form-check-input" id="top_flag" name="top_flag" value="YES">
+		    <label class="form-check-label" for="top_flag">龙头股</label>
+<!-- 		    <select id="top_flag" class="form-control">
+	            		<option selected>否</option>
+	            		<option>是</option>
+	          		</select>	 -->	    
+		    <small id="top_flag_Help" class="form-text text-muted">勾选为该行业\概念龙头股</small>
+		  </div>
+		  <p></p>
+		  <div class="form-group">
+		    <label for="top_year">年份</label>
+		    <input type="text" class="form-control" id="top_year" name="top_year">
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="top_weighting">权重</label>
+		    <input type="text" class="form-control" id="top_weighting" name="top_weighting">
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="top_concenpt">题材</label>
+		    <input type="text" class="form-control" id="top_concenpt" name="top_concenpt">
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="top_industry">产业</label>
+		    <input type="text" class="form-control" id="top_industry" name="top_industry">
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="top_memo">备注</label>
+		    <input type="text" class="form-control" id="top_memo"  name="top_memo">
+		  </div>
+		  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="topstockFormBtn">Save changes</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#topstockEditModal').on('show.bs.modal', function (event) {
+  				var button = $(event.relatedTarget) // Button that triggered the modal
+  				var stockcode = button.data('stockcode') // Extract info from data-* attributes
+  				var stockname = button.data('stockname')
+  				var conceptname = button.data('conceptname')
+  				var top_flag = button.data('top_flag')
+  				var top_year = button.data('top_year')
+  				var top_weighting = button.data('top_weighting')
+  				var top_concenpt = button.data('top_concenpt')
+  				var top_industry = button.data('top_industry')
+  				var top_memo = button.data('top_memo')
+  				//alert(button+' '+recipient)
+  				// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  				// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  				var modal = $(this)
+  				modal.find('.modal-title').text('New message to ' + stockcode)
+  				modal.find('#stockcode').val(stockcode)
+  				modal.find('#stockname').val(stockname)
+  				modal.find('#conceptname').val(conceptname)
+  				if (top_flag=="YES") {modal.find('#top_flag').attr('checked', true);}
+  				else{modal.find('#top_flag').attr('checked', false);}
+  				modal.find('#top_year').val(top_year)
+  				modal.find('#top_weighting').val(top_weighting)
+  				modal.find('#top_concenpt').val(top_concenpt)
+  				modal.find('#top_industry').val(top_industry)
+  				modal.find('#top_memo').val(top_memo)
+			})
+
+		});
+		</script>
+
+		<script type="text/javascript">
+		$(function() {
+			$("#topstockFormBtn").on("click", function() {
+				$.ajax({
+					type: "post",
+					url: "/topstock/save/",
+					data: $("#topstockForm").serialize(), // 序列化form表单里面的数据传到后台
+					//dataType: "json", // 指定后台传过来的数据是json格式
+					success: function(data){
+						if (data == "success") {
+							alert("success");
+						} else {
+							alert("no data");
+						}
+					},
+					error: function(err){
+						alert("error");
+					}
+				})
+			})
+		})
+		</script>
+
+<!--     <script type="text/javascript">
+		$(document).ready(function(){
+
+		    $('a').click(function(data){
+		        //请求参数
+		        var data = $(this).text();
+		        //
+		        $.ajax({
+		            //请求方式
+		            type : "get",
+		            //请求的媒体类型
+		            contentType: "application/json",
+		            //请求地址
+		            url : "/index/stocks/"+data,
+		            //数据，json字符串
+		            //data : data,
+		            //请求成功
+		            success : function(result) {
+		            	$("#stockscount").text(result.count.toString());
+						var $tdName = $("<td>1111</td>"); //创建第一个td
+						$("#stocksitem").append($tdName);
+		                //alert(result);
+		            },
+		            //请求失败，包含具体的错误信息
+		            error : function(e){
+		                $("#content").text(e.status);
+		                $("#content").text(e.responseText);
+		            }
+		        });
+		    });
+
+		});
+	</script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

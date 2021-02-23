@@ -1,0 +1,105 @@
+{#  data_mainpanel.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	{{js_res|safe}}
+	{{css_res|safe}}
+    <title>QDS数据量化服务</title>
+  </head>
+  <body>  
+  {% include 'nav-data.html' ignore missing %}
+  <div class="container-fluid">
+  <div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-2">
+  	<div class="card">		
+		<div class="card-body">
+		<h5 class="card-title">上证A指数综合 {{index_dict_0.trade_date}}</h5>		       
+<!-- 		{{p_script1|safe}}
+{{p_div1|safe}} -->
+		{% if index_dict_0.pct_chg < 0 %}
+		<p class="card-text text-success">{{index_dict_0.close}}  |  {{index_dict_0.pct_chg}}%</p>
+		{% else %}
+		<p class="card-text text-danger">{{index_dict_0.close}}  |  {{index_dict_0.pct_chg}}%</p>
+		{% endif %}
+		<p class="card-text">{{index_close_avg_5}}  |  {{pct_chg_avg_5}}%</p>
+		<p class="card-text">{{index_dict_0.amount//100000}} </p>
+		</div>
+	</div>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+  	<div class="card">
+		<div class="card-header">数据面板1</div>
+		<div class="card-body">		       
+		
+		</div>
+	</div>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+  	<div class="card">
+		<div class="card-header">数据面板1</div>
+		<div class="card-body">		       
+		
+		</div>
+	</div>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+  	<div class="card">
+		<div class="card-header">数据面板1</div>
+		<div class="card-body">		       
+		
+		</div>
+	</div>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+  	<div class="card">
+		<div class="card-header">数据面板1</div>
+		<div class="card-body">		       
+		
+		</div>
+	</div>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+  	<div class="card">
+		<div class="card-header">数据面板1</div>
+		<div class="card-body">		       
+		
+		</div>
+	</div>
+  </div>
+</div>
+   </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+			$('ul.nav > li').click(function (e) {
+			//e.preventDefault();
+			$('ul.nav > li').removeClass('active');
+			$(this).addClass('active');
+			});
+		});
+		</script>
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

@@ -1,0 +1,43 @@
+{#  index.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>QAS量化分析服务</title>
+    {% include 'nav.html' ignore missing %}
+  </head>
+<body>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">申万SW行业分类</h5>
+			<p>L1分类总数：{{ args }}</p>
+			{% for item in kw %}
+			<p>{{loop.index}}:{{item.level}}-{{ item.index_code}}-{{ item.industry_name}}</p>
+			{% endfor%}
+			<p>{{index}}-{{indexname}}分类：</p>
+			<p>成分股总数：{{ stockscount }}</p>
+			{% for item in stocks%}
+			<p>{{loop.index}}:{{item.index_code}}-{{item.index_name}}-{{ item.con_code}}-{{ item.con_name}}</p>
+			{% endfor%}
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,664 @@
+{#  industry_category.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.14.0/js/fontawesome.min.js"></script>
+	<link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.js"></script>
+	<link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/extensions/fixed-columns/bootstrap-table-fixed-columns.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/extensions/fixed-columns/bootstrap-table-fixed-columns.min.js"></script>
+	{{js_res|safe}}
+	{{css_res|safe}}
+    <title>QAS量化分析服务</title>
+  </head>
+  <body>  
+  {% include 'nav-industry.html' ignore missing %}
+  <div class="container-fluid">
+  <h5>行业看多-量价三因子分析</h5>
+	  <div class="row">
+			<div class="col-sm-12">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">证监会行业分类分析</h5>		      	
+			      	<table class="table table-hover"
+			           data-toggle="table"  //启用bootstrap表格
+			           data-classes="table table-hover"
+			           data-show-columns="false"  //是否显示内容列下拉框。
+			           data-striped="true"  //设置为 true 会有隔行变色效果
+			           data-search="true" //是否显示搜索框
+			           data-show-refresh="false" //是否显示刷新按钮
+			           data-toolbar="#toolbar"  //工具栏
+			           data-height="500"  //设置表格高度-固定表头生效
+			        >
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">行业</th>					      
+					      <th scope="col">代码</th>
+					      <th scope="col">个股数量</th>
+					      <th scope="col" data-sortable="true">交易日</th>
+					      <th scope="col" data-sortable="true">上涨股数占比</th>
+ 					      <!--<th scope="col" data-sortable="true">当日平均涨幅</th>
+							<th scope="col" data-sortable="true">3日平均涨幅</th>
+<th scope="col" data-sortable="true">当日最大涨幅</th>
+<th scope="col" data-sortable="true">当日最大跌幅</th> -->
+					      
+					      <th scope="col" data-sortable="true">当日涨停家数</th>
+					      <th scope="col" data-sortable="true">成交量上涨占比</th>
+					      <th scope="col" data-sortable="true">涨幅100%个股占比</th>
+					  <!--
+					  <th scope="col" data-sortable="true">平均换手率</th>
+				      <th scope="col" data-sortable="true">平均量比</th>
+ 					      <th scope="col" data-sortable="true">平均涨幅</th>
+				      <th scope="col" data-sortable="true">最大涨幅</th>
+				      <th scope="col" data-sortable="true">最大跌幅</th>				      				      
+				      <th scope="col" data-sortable="true">换手率大于5占比</th>
+				      <th scope="col" data-sortable="true">量比大于5占比</th>	 -->				      
+					    </tr>
+					  </thead>
+					  <tbody>
+ 					{% for item in industry_dict %}
+					    <tr>
+					      	<th scope="row">{{loop.index}}</th>
+					      	<td>{{item.industry_name}}</td>
+					      	<td>{{item.index_code}}</td>
+					      	<td><a href="/industry/category/stocksbasic_industry_list/index_code/{{item.index_code}}/stocks/">{{item.stockslist_count}}</a></td>
+					      	<td>{{item.trade_date}}</td>
+					      	<td>
+					      	{% if item.stocks_up_count_ratio >= 0.95 %}
+								<span class="card-text text-danger">{{item.stocks_up_count_ratio}}</span>
+								{% else %}
+								<span class="card-text">{{item.stocks_up_count_ratio}}</span>
+							{% endif %}					      	
+					      	</td>
+ 					      	<!--<td>{{item.stocks_pct_chg_avg}}</td>
+<td>{{item.stocks_pct_chg_3_avg}}</td>
+<td>{{item.stocks_pct_chg_max}}</td>
+<td>{{item.stocks_pct_chg_min}}</td>
+ -->
+ 							<td>
+					      	{% if item.stocks_limit_count >= 2 %}					      	
+					      		<span class="card-text text-danger">{{item.stocks_limit_count}}</span>
+								{% else %}
+								<span class="card-text">{{item.stocks_limit_count}}</span>
+							{% endif %}
+					      	</td>
+							
+							{% if item.stocks_vol_up_count_ratio >= 0.95 %}
+					      		<td class="text-danger">
+					      	{% else %}
+					      		<td>
+					      	{% endif %}
+					      	{{item.stocks_vol_up_count_ratio}}</td>
+					      	
+					      	{% if item.stocks_vol_up_100_count_ratio >= 0.5 %}
+					      		<td class="text-danger">
+					      	{% else %}
+					      		<td>
+					      	{% endif %}
+					      		{{item.stocks_vol_up_100_count_ratio}}</td>
+					      	<!--
+					      	<td>{{item.stocks_turnover_avg}}</td>
+					      	<td>{{item.stocks_vr_avg}}</td>	
+ 					      	<td>{{item.stocks_vol_pct_chg_avg}}</td>
+					      						      	<td>{{item.stocks_vol_pct_chg_max}}</td>
+					      						      	<td>{{item.stocks_vol_pct_chg_min}}</td>
+					      						      	<td>{{item.stocks_vol_up_100_count}}</td>
+					      						      	
+				      	
+					      						      	<td>{{item.stocks_turnover_up_N_count_ratio}}</td>
+					      						      	<td>{{item.stocks_vr_up_M_count_ratio}}</td> -->					      						      	
+					    </tr>
+					{% endfor%} 
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go Top</a>
+			      </div>
+			    </div>
+		  	</div>	
+	  	</div>
+	  <br>
+  		<div class="row">
+		  	<div class="col-sm-12">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">申万一级行业分析</h5>		      	
+			      	<table class="table table-hover"
+			           data-toggle="table"  //启用bootstrap表格
+			           data-classes="table table-hover"
+			           data-show-columns="false"  //是否显示内容列下拉框。
+			           data-striped="true"  //设置为 true 会有隔行变色效果
+			           data-search="true" //是否显示搜索框
+			           data-show-refresh="false" //是否显示刷新按钮
+			           data-toolbar="#toolbar"  //工具栏
+			           data-height="500"  //设置表格高度-固定表头生效
+			        >
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">行业</th>					      
+					      <th scope="col">代码</th>
+					      <th scope="col">个股数量</th>
+					      <th scope="col" data-sortable="true">交易日</th>
+					      <th scope="col" data-sortable="true">上涨股数占比</th>
+<!-- 					      <th scope="col" data-sortable="true">当日平均涨幅</th>
+<th scope="col" data-sortable="true">3日平均涨幅</th>
+<th scope="col" data-sortable="true">当日最大涨幅</th>
+<th scope="col" data-sortable="true">当日最大跌幅</th> -->
+					      
+					      <th scope="col" data-sortable="true">当日涨停家数</th>
+					      <th scope="col" data-sortable="true">成交量上涨占比</th>
+					      <th scope="col" data-sortable="true">涨幅100%个股占比</th>
+<!-- 					      <th scope="col" data-sortable="true">平均涨幅</th>
+				      <th scope="col" data-sortable="true">最大涨幅</th>
+				      <th scope="col" data-sortable="true">最大跌幅</th>				      
+				      <th scope="col" data-sortable="true">平均换手率</th>
+				      <th scope="col" data-sortable="true">平均量比</th>					      
+				      <th scope="col" data-sortable="true">换手率大于5占比</th>
+				      <th scope="col" data-sortable="true">量比大于5占比</th>	 -->
+					    </tr>
+					  </thead>
+					  <tbody>
+ 					{% for item in swl1_dict %}
+					    <tr>
+					      	<th scope="row">{{loop.index}}</th>
+					      	<td>{{item.industry_name}}</td>
+					      	<td>{{item.index_code}}</td>
+					      	<td><a href="/industry/category/swl1/index_code/{{item.index_code}}/stocks/">{{item.stockslist_count}}</a></td>
+					      	<td>{{item.trade_date}}</td>
+					      	<td>
+					      	{% if item.stocks_up_count_ratio >= 0.95 %}
+								<span class="card-text text-danger">{{item.stocks_up_count_ratio}}</span>
+								{% else %}
+								<span class="card-text">{{item.stocks_up_count_ratio}}</span>
+							{% endif %}					      	
+					      	</td>
+<!-- 					      	<td>{{item.stocks_pct_chg_avg}}</td>
+<td>{{item.stocks_pct_chg_3_avg}}</td>
+<td>{{item.stocks_pct_chg_max}}</td>
+<td>{{item.stocks_pct_chg_min}}</td>
+ -->
+ 							<td>
+					      	{% if item.stocks_limit_count >= 2 %}					      	
+					      		<span class="card-text text-danger">{{item.stocks_limit_count}}</span>
+								{% else %}
+								<span class="card-text">{{item.stocks_limit_count}}</span>
+							{% endif %}
+					      	</td>
+							
+							{% if item.stocks_vol_up_count_ratio >= 0.95 %}
+					      		<td class="text-danger">
+					      	{% else %}
+					      		<td>
+					      	{% endif %}
+					      	{{item.stocks_vol_up_count_ratio}}</td>
+
+					      	{% if item.stocks_vol_up_100_count_ratio >= 0.5 %}
+					      		<td class="text-danger">
+					      	{% else %}
+					      		<td>
+					      	{% endif %}
+					      		{{item.stocks_vol_up_100_count_ratio}}</td>
+<!-- 					      	<td>{{item.stocks_vol_pct_chg_avg}}</td>
+					      						      	<td>{{item.stocks_vol_pct_chg_max}}</td>
+					      						      	<td>{{item.stocks_vol_pct_chg_min}}</td>
+					      						      	<td>{{item.stocks_vol_up_100_count}}</td>
+					      						      	
+					      						      	<td>{{item.stocks_turnover_avg}}</td>
+					      						      	<td>{{item.stocks_vr_avg}}</td>					      	
+					      						      	<td>{{item.stocks_turnover_up_N_count_ratio}}</td>
+					      						      	<td>{{item.stocks_vr_up_M_count_ratio}}</td> -->	
+					    </tr>
+					{% endfor%} 
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go Top</a>
+
+			      </div>
+			    </div>
+		  	</div>
+		</div>
+	<br>
+  		<div class="row">	
+		  	<div class="col-sm-12">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">申万二级行业分析</h5>		      	
+			      	<table class="table table-hover"
+			           data-toggle="table"  //启用bootstrap表格
+			           data-classes="table table-hover"
+			           data-show-columns="false"  //是否显示内容列下拉框。
+			           data-striped="true"  //设置为 true 会有隔行变色效果
+			           data-search="true" //是否显示搜索框
+			           data-show-refresh="false" //是否显示刷新按钮
+			           data-toolbar="#toolbar"  //工具栏
+			           data-height="500"  //设置表格高度-固定表头生效
+			        >
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">行业</th>					      
+					      <th scope="col">代码</th>
+					      <th scope="col">个股数量</th>
+					      <th scope="col" data-sortable="true">交易日</th>
+					      <th scope="col" data-sortable="true">上涨股数占比</th>
+<!-- 					      <th scope="col" data-sortable="true">当日平均涨幅</th>
+<th scope="col" data-sortable="true">3日平均涨幅</th>
+<th scope="col" data-sortable="true">当日最大涨幅</th>
+<th scope="col" data-sortable="true">当日最大跌幅</th> -->
+					      
+					      <th scope="col" data-sortable="true">当日涨停家数</th>
+					      <th scope="col" data-sortable="true">成交量上涨占比</th>
+					      <th scope="col" data-sortable="true">涨幅100%个股占比</th>
+<!-- 					      <th scope="col" data-sortable="true">平均涨幅</th>
+				      <th scope="col" data-sortable="true">最大涨幅</th>
+				      <th scope="col" data-sortable="true">最大跌幅</th>				      
+				      <th scope="col" data-sortable="true">平均换手率</th>
+				      <th scope="col" data-sortable="true">平均量比</th>					      
+				      <th scope="col" data-sortable="true">换手率大于5占比</th>
+				      <th scope="col" data-sortable="true">量比大于5占比</th>	 -->
+					    </tr>
+					  </thead>
+					  <tbody>
+ 					{% for item in swl2_dict %}
+					    <tr>
+					      	<th scope="row">{{loop.index}}</th>
+					      	<td>{{item.industry_name}}</td>
+					      	<td>{{item.index_code}}</td>
+					      	<td><a href="/industry/category/swl2/index_code/{{item.index_code}}/stocks/">{{item.stockslist_count}}</a></td>
+					      	<td>{{item.trade_date}}</td>
+					      	<td>
+					      	{% if item.stocks_up_count_ratio >= 0.95 %}
+								<span class="card-text text-danger">{{item.stocks_up_count_ratio}}</span>
+								{% else %}
+								<span class="card-text">{{item.stocks_up_count_ratio}}</span>
+							{% endif %}					      	
+					      	</td>
+<!-- 					      	<td>{{item.stocks_pct_chg_avg}}</td>
+<td>{{item.stocks_pct_chg_3_avg}}</td>
+<td>{{item.stocks_pct_chg_max}}</td>
+<td>{{item.stocks_pct_chg_min}}</td>
+ -->
+ 							<td>
+					      	{% if item.stocks_limit_count >= 2 %}					      	
+					      		<span class="card-text text-danger">{{item.stocks_limit_count}}</span>
+								{% else %}
+								<span class="card-text">{{item.stocks_limit_count}}</span>
+							{% endif %}
+					      	</td>
+							
+							{% if item.stocks_vol_up_count_ratio >= 0.95 %}
+					      		<td class="text-danger">
+					      	{% else %}
+					      		<td>
+					      	{% endif %}
+					      	{{item.stocks_vol_up_count_ratio}}</td>
+					      	
+					      	{% if item.stocks_vol_up_100_count_ratio >= 0.5 %}
+					      		<td class="text-danger">
+					      	{% else %}
+					      		<td>
+					      	{% endif %}
+					      		{{item.stocks_vol_up_100_count_ratio}}</td>
+<!-- 					      	<td>{{item.stocks_vol_pct_chg_avg}}</td>
+					      						      	<td>{{item.stocks_vol_pct_chg_max}}</td>
+					      						      	<td>{{item.stocks_vol_pct_chg_min}}</td>
+					      						      	<td>{{item.stocks_vol_up_100_count}}</td>
+					      						      	
+					      						      	<td>{{item.stocks_turnover_avg}}</td>
+					      						      	<td>{{item.stocks_vr_avg}}</td>					      	
+					      						      	<td>{{item.stocks_turnover_up_N_count_ratio}}</td>
+					      						      	<td>{{item.stocks_vr_up_M_count_ratio}}</td> -->			
+					    </tr>
+					{% endfor%} 
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go Top</a>
+			      </div>
+			    </div>
+		  	</div>
+		</div>
+	<br>
+  		<div class="row">
+		  	<div class="col-sm-12">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">申万三级行业分析</h5>		      	
+			      	<table class="table table-hover"
+			           data-toggle="table"  //启用bootstrap表格
+			           data-classes="table table-hover"
+			           data-show-columns="false"  //是否显示内容列下拉框。
+			           data-striped="true"  //设置为 true 会有隔行变色效果
+			           data-search="true" //是否显示搜索框
+			           data-show-refresh="false" //是否显示刷新按钮
+			           data-toolbar="#toolbar"  //工具栏
+			           data-height="500"  //设置表格高度-固定表头生效
+			        >
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">行业</th>					      
+					      <th scope="col">代码</th>
+					      <th scope="col">个股数量</th>
+					      <th scope="col" data-sortable="true">交易日</th>
+					      <th scope="col" data-sortable="true">上涨股数占比</th>
+<!-- 					      <th scope="col" data-sortable="true">当日平均涨幅</th>
+<th scope="col" data-sortable="true">3日平均涨幅</th>
+<th scope="col" data-sortable="true">当日最大涨幅</th>
+<th scope="col" data-sortable="true">当日最大跌幅</th> -->
+					      
+					      <th scope="col" data-sortable="true">当日涨停家数</th>
+					      <th scope="col" data-sortable="true">成交量上涨占比</th>
+					      <th scope="col" data-sortable="true">涨幅100%个股占比</th>
+<!-- 					      <th scope="col" data-sortable="true">平均涨幅</th>
+				      <th scope="col" data-sortable="true">最大涨幅</th>
+				      <th scope="col" data-sortable="true">最大跌幅</th>				      
+				      <th scope="col" data-sortable="true">平均换手率</th>
+				      <th scope="col" data-sortable="true">平均量比</th>					      
+				      <th scope="col" data-sortable="true">换手率大于5占比</th>
+				      <th scope="col" data-sortable="true">量比大于5占比</th>	 -->
+					    </tr>
+					  </thead>
+					  <tbody>
+ 					{% for item in swl3_dict %}
+					    <tr>
+					      	<th scope="row">{{loop.index}}</th>
+					      	<td>{{item.industry_name}}</td>
+					      	<td>{{item.index_code}}</td>
+					      	<td><a href="/industry/category/swl3/index_code/{{item.index_code}}/stocks/">{{item.stockslist_count}}</a></td>
+					      	<td>{{item.trade_date}}</td>
+					      	<td>
+					      	{% if item.stocks_up_count_ratio >= 0.95 %}
+								<span class="card-text text-danger">{{item.stocks_up_count_ratio}}</span>
+								{% else %}
+								<span class="card-text">{{item.stocks_up_count_ratio}}</span>
+							{% endif %}					      	
+					      	</td>
+<!-- 					      	<td>{{item.stocks_pct_chg_avg}}</td>
+<td>{{item.stocks_pct_chg_3_avg}}</td>
+<td>{{item.stocks_pct_chg_max}}</td>
+<td>{{item.stocks_pct_chg_min}}</td>
+ -->
+ 							<td>
+					      	{% if item.stocks_limit_count >= 2 %}					      	
+					      		<span class="card-text text-danger">{{item.stocks_limit_count}}</span>
+								{% else %}
+								<span class="card-text">{{item.stocks_limit_count}}</span>
+							{% endif %}
+					      	</td>
+							
+							{% if item.stocks_vol_up_count_ratio >= 0.95 %}
+					      		<td class="text-danger">
+					      	{% else %}
+					      		<td>
+					      	{% endif %}
+					      	{{item.stocks_vol_up_count_ratio}}</td>
+					      	
+					      	{% if item.stocks_vol_up_100_count_ratio >= 0.5 %}
+					      		<td class="text-danger">
+					      	{% else %}
+					      		<td>
+					      	{% endif %}
+					      		{{item.stocks_vol_up_100_count_ratio}}</td>
+<!-- 					      	<td>{{item.stocks_vol_pct_chg_avg}}</td>
+					      						      	<td>{{item.stocks_vol_pct_chg_max}}</td>
+					      						      	<td>{{item.stocks_vol_pct_chg_min}}</td>
+					      						      	<td>{{item.stocks_vol_up_100_count}}</td>
+					      						      	
+					      						      	<td>{{item.stocks_turnover_avg}}</td>
+					      						      	<td>{{item.stocks_vr_avg}}</td>					      	
+					      						      	<td>{{item.stocks_turnover_up_N_count_ratio}}</td>
+					      						      	<td>{{item.stocks_vr_up_M_count_ratio}}</td> -->		
+					    </tr>
+					{% endfor%} 
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go Top</a>
+			      </div>
+			    </div>
+		  	</div>
+		</div>		  	
+	  <br>
+  		<div class="row">
+		  	<div class="col-sm-12">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">概念分类分析</h5>		      	
+			      	<table class="table table-hover"
+			           data-toggle="table"  //启用bootstrap表格
+			           data-classes="table table-hover"
+			           data-show-columns="false"  //是否显示内容列下拉框。
+			           data-striped="true"  //设置为 true 会有隔行变色效果
+			           data-search="true" //是否显示搜索框
+			           data-show-refresh="false" //是否显示刷新按钮
+			           data-toolbar="#toolbar"  //工具栏
+			           data-height="500"  //设置表格高度-固定表头生效
+			        >
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">行业</th>					      
+					      <th scope="col">代码</th>
+					      <th scope="col">个股数量</th>
+					      <th scope="col" data-sortable="true">交易日</th>
+					      <th scope="col" data-sortable="true">上涨股数占比</th>
+<!-- 					      <th scope="col" data-sortable="true">当日平均涨幅</th>
+<th scope="col" data-sortable="true">3日平均涨幅</th>
+<th scope="col" data-sortable="true">当日最大涨幅</th>
+<th scope="col" data-sortable="true">当日最大跌幅</th> -->
+					      
+					      <th scope="col" data-sortable="true">当日涨停家数</th>
+					      <th scope="col" data-sortable="true">成交量上涨占比</th>
+					      <th scope="col" data-sortable="true">涨幅100%个股占比</th>
+<!-- 					      <th scope="col" data-sortable="true">平均涨幅</th>
+				      <th scope="col" data-sortable="true">最大涨幅</th>
+				      <th scope="col" data-sortable="true">最大跌幅</th>				      
+				      <th scope="col" data-sortable="true">平均换手率</th>
+				      <th scope="col" data-sortable="true">平均量比</th>					      
+				      <th scope="col" data-sortable="true">换手率大于5占比</th>
+				      <th scope="col" data-sortable="true">量比大于5占比</th>	 -->
+					    </tr>
+					  </thead>
+					  <tbody>
+ 					{% for item in concept_dict %}
+					    <tr>
+					      	<th scope="row">{{loop.index}}</th>
+					      	<td>{{item.industry_name}}</td>
+					      	<td>{{item.index_code}}</td>
+					      	<td><a href="/industry/category/concept_list/index_code/{{item.index_code}}/stocks/">{{item.stockslist_count}}</a></td>
+					      	<td>{{item.trade_date}}</td>
+					      	<td>
+					      	{% if item.stocks_up_count_ratio >= 0.95 %}
+								<span class="card-text text-danger">{{item.stocks_up_count_ratio}}</span>
+								{% else %}
+								<span class="card-text">{{item.stocks_up_count_ratio}}</span>
+							{% endif %}					      	
+					      	</td>
+<!-- 					      	<td>{{item.stocks_pct_chg_avg}}</td>
+<td>{{item.stocks_pct_chg_3_avg}}</td>
+<td>{{item.stocks_pct_chg_max}}</td>
+<td>{{item.stocks_pct_chg_min}}</td>
+ -->
+ 							<td>
+					      	{% if item.stocks_limit_count >= 2 %}					      	
+					      		<span class="card-text text-danger">{{item.stocks_limit_count}}</span>
+								{% else %}
+								<span class="card-text">{{item.stocks_limit_count}}</span>
+							{% endif %}
+					      	</td>
+							
+							{% if item.stocks_vol_up_count_ratio >= 0.95 %}
+					      		<td class="text-danger">
+					      	{% else %}
+					      		<td>
+					      	{% endif %}
+					      	{{item.stocks_vol_up_count_ratio}}</td>
+					      	
+					      	{% if item.stocks_vol_up_100_count_ratio >= 0.5 %}
+					      		<td class="text-danger">
+					      	{% else %}
+					      		<td>
+					      	{% endif %}
+					      		{{item.stocks_vol_up_100_count_ratio}}</td>
+<!-- 					      	<td>{{item.stocks_vol_pct_chg_avg}}</td>
+					      						      	<td>{{item.stocks_vol_pct_chg_max}}</td>
+					      						      	<td>{{item.stocks_vol_pct_chg_min}}</td>
+					      						      	<td>{{item.stocks_vol_up_100_count}}</td>
+					      						      	
+					      						      	<td>{{item.stocks_turnover_avg}}</td>
+					      						      	<td>{{item.stocks_vr_avg}}</td>					      	
+					      						      	<td>{{item.stocks_turnover_up_N_count_ratio}}</td>
+					      						      	<td>{{item.stocks_vr_up_M_count_ratio}}</td> -->	
+					    </tr>
+					{% endfor%} 
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go Top</a>
+
+			      </div>
+			    </div>
+		  	</div>		
+		</div>
+	<br>
+   </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="topstockEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<!-- <form action="/topstock/save/" method="post"> -->
+        <form id="topstockForm">
+		  <div class="form-group">
+		    <label for="stockcode">股票代码</label>
+		    <input type="text" class="form-control" id="stockcode" name="stockcode" readonly>
+		  </div>
+		  <div class="form-group">
+		    <label for="stockname">股票名称</label>
+		    <input type="text" class="form-control" id="stockname" readonly>
+		  </div>
+		  <div class="form-group">
+		    <label for="conceptname">概念</label>
+		    <input type="text" class="form-control" id="conceptname" readonly>
+		  </div>
+		  <div class="form-check">		  	
+		    <input type="checkbox" class="form-check-input" id="top_flag" name="top_flag" value="YES">
+		    <label class="form-check-label" for="top_flag">龙头股</label>
+<!-- 		    <select id="top_flag" class="form-control">
+	            		<option selected>否</option>
+	            		<option>是</option>
+	          		</select>	 -->	    
+		    <small id="top_flag_Help" class="form-text text-muted">勾选为该行业\概念龙头股</small>
+		  </div>
+		  <p></p>
+		  <div class="form-group">
+		    <label for="top_year">年份</label>
+		    <input type="text" class="form-control" id="top_year" name="top_year">
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="top_weighting">权重</label>
+		    <input type="text" class="form-control" id="top_weighting" name="top_weighting">
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="top_concenpt">题材</label>
+		    <input type="text" class="form-control" id="top_concenpt" name="top_concenpt">
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="top_industry">产业</label>
+		    <input type="text" class="form-control" id="top_industry" name="top_industry">
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="top_memo">备注</label>
+		    <input type="text" class="form-control" id="top_memo"  name="top_memo">
+		  </div>
+		  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="topstockFormBtn">Save changes</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+			$('ul.nav > li').click(function (e) {
+			//e.preventDefault();
+			$('ul.nav > li').removeClass('active');
+			$(this).addClass('active');
+			});
+		});
+		</script>
+<!--     <script type="text/javascript">
+		$(document).ready(function(){
+
+		    $('a').click(function(data){
+		        //请求参数
+		        var data = $(this).text();
+		        //
+		        $.ajax({
+		            //请求方式
+		            type : "get",
+		            //请求的媒体类型
+		            contentType: "application/json",
+		            //请求地址
+		            url : "/index/stocks/"+data,
+		            //数据，json字符串
+		            //data : data,
+		            //请求成功
+		            success : function(result) {
+		            	$("#stockscount").text(result.count.toString());
+						var $tdName = $("<td>1111</td>"); //创建第一个td
+						$("#stocksitem").append($tdName);
+		                //alert(result);
+		            },
+		            //请求失败，包含具体的错误信息
+		            error : function(e){
+		                $("#content").text(e.status);
+		                $("#content").text(e.responseText);
+		            }
+		        });
+		    });
+
+		});
+	</script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

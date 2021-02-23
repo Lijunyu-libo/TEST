@@ -1,0 +1,138 @@
+{#  tradememo_reason_tradedate_profit.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	{{js_res|safe}}
+	{{css_res|safe}}
+    <title>QTS量化交易服务</title>
+  </head>
+  <body>  
+  {% include 'nav-trade.html' ignore missing %}
+  <div class="container-fluid">
+	  	<p>{{reason}} {{trigger_trade_date}}日触发个股 平均收益率走势图</p>
+	  	{{p_script2|safe}}
+		{{p_div2|safe}}
+		<div class="row">
+		  	<div class="col-sm-12">
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">{{reason}}  {{trigger_trade_date}}   <span class="badge badge-secondary">{{resultcount}}</span>
+			        </h5>
+			        <table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">触发策略</th>	      
+					      <th scope="col">触发交易日</th>
+					      <th scope="col">交易日</th>
+					      <th scope="col">平均收盘收益率</th>
+					      <th scope="col">平均最高收益率</th>
+					      <th scope="col">平均最低收益率</th>
+<!-- 					      <th scope="col">日内振幅点</th>
+<th scope="col">日内振幅（%）</th> -->
+<!-- 					      <th scope="col">成交量（手）</th>
+<th scope="col">成交额（千元）</th> -->
+					      <!-- <th scope="col">MA5</th> -->
+<!-- 					      <th scope="col">RSI6</th>
+<th scope="col">MTM</th>
+<th scope="col">MACD</th> -->
+					    </tr>
+					  </thead>
+					  <tbody>
+ 					{% for item in results %}
+					    <tr>
+					      	<th scope="row">{{loop.index}}</th>
+					      	<td>{{item.reason}}</td>
+					      	<td>{{item.trigger_trade_date}}</td>
+					      	<td>{{item.trade_date}}</td>
+					      	<td>{{item.profit_avg}}</td>
+					      	<td>{{item.profit_high_avg}}</td>
+					      	<td>{{item.profit_low_avg}}</td>
+<!-- 					      	<td>{{item.high_low}}</td>
+<td>{{item.pct_high_low}}</td> -->
+<!-- 					      	<td>{{item.vol}}</td>
+<td>{{item.amount}}</td> -->
+					      	<!-- <td>{{item.MA5}}</td> -->
+<!-- 					      	<td>{{item.RSI6}}</td>
+				      <td>{{item.MTM}}</td>
+				      <td>{{item.MACD}}</td>	 -->				      
+					    </tr>
+					{% endfor%} 
+						<!-- <tr id="stocksitem">						
+						</tr> -->
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go Top</a>
+			      </div>
+			    </div>
+		  	</div>
+	</div>
+   </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+			$('ul.nav > li').click(function (e) {
+			//e.preventDefault();
+			$('ul.nav > li').removeClass('active');
+			$(this).addClass('active');
+			});
+		});
+		</script>
+<!--     <script type="text/javascript">
+		$(document).ready(function(){
+
+		    $('a').click(function(data){
+		        //请求参数
+		        var data = $(this).text();
+		        //
+		        $.ajax({
+		            //请求方式
+		            type : "get",
+		            //请求的媒体类型
+		            contentType: "application/json",
+		            //请求地址
+		            url : "/index/stocks/"+data,
+		            //数据，json字符串
+		            //data : data,
+		            //请求成功
+		            success : function(result) {
+		            	$("#stockscount").text(result.count.toString());
+						var $tdName = $("<td>1111</td>"); //创建第一个td
+						$("#stocksitem").append($tdName);
+		                //alert(result);
+		            },
+		            //请求失败，包含具体的错误信息
+		            error : function(e){
+		                $("#content").text(e.status);
+		                $("#content").text(e.responseText);
+		            }
+		        });
+		    });
+
+		});
+	</script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

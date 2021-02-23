@@ -1,0 +1,129 @@
+{#  mainpanel.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="{{url_for('static', path='/fullcalendar-5.5.0/lib/main.min.js')}}"></script>
+    <script src="{{url_for('static', path='/fullcalendar-5.5.0/lib/locales-all.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', path='/fullcalendar-5.5.0/lib/main.min.css')}}">
+    <script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+    var initialLocaleCode = 'zh-cn';//en
+    var localeSelectorEl = document.getElementById('locale-selector');
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,listMonth'//timeGridDay
+      },
+      //initialDate: '2020-09-12',
+      locale: initialLocaleCode,
+      buttonIcons: false, // show the prev/next text
+      weekNumbers: true,
+      navLinks: true, // can click day/week names to navigate views
+      editable: true,
+      dayMaxEvents: true, // allow "more" link when too many events
+      weekends:false,
+      events: [
+
+      {% for event in industry_list %}
+        {
+          title:'{{event.title}}',
+          start:'{{event.start}}',
+          end:'{{event.end}}'
+        },
+      {% endfor%}
+
+      ]
+    });
+
+    calendar.render();
+
+  });
+
+</script>
+
+</script>
+  {{js_res|safe}}
+  {{css_res|safe}}
+    <title>行业热点日历</title>
+  </head>
+  <body>  
+  {% include 'nav.html' ignore missing %}
+  <div class="container-fluid">
+    
+    <h5 class = "p-md-2 " style ="border-left:solid 5px purple;  ">  行业热点日历</h5>
+    <div id='calendar'></div>
+   </div>
+<p></p>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+          $('#goToTop a').click(function(){
+              $('html,body').animate({scrollTop:0},'slow');
+          });
+      });
+  </script>
+      <script>
+    function indexBut(a){
+      var indexcode = $(a).attr("data-name");
+      $("#content").text(indexcode);
+    }
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+      $('ul.nav > li').click(function (e) {
+      //e.preventDefault();
+      $('ul.nav > li').removeClass('active');
+      $(this).addClass('active');
+      });
+    });
+    </script>
+<!--     <script type="text/javascript">
+    $(document).ready(function(){
+
+        $('a').click(function(data){
+            //请求参数
+            var data = $(this).text();
+            //
+            $.ajax({
+                //请求方式
+                type : "get",
+                //请求的媒体类型
+                contentType: "application/json",
+                //请求地址
+                url : "/index/stocks/"+data,
+                //数据，json字符串
+                //data : data,
+                //请求成功
+                success : function(result) {
+                  $("#stockscount").text(result.count.toString());
+            var $tdName = $("<td>1111</td>"); //创建第一个td
+            $("#stocksitem").append($tdName);
+                    //alert(result);
+                },
+                //请求失败，包含具体的错误信息
+                error : function(e){
+                    $("#content").text(e.status);
+                    $("#content").text(e.responseText);
+                }
+            });
+        });
+
+    });
+  </script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

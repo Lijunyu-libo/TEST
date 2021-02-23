@@ -1,0 +1,502 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"clo",
+				"col"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"ma",
+				"margin-right"
+			],
+			[
+				"li",
+				"li\tTag"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"text",
+				"text-white"
+			],
+			[
+				"b",
+				"background-color"
+			],
+			[
+				"back",
+				"background-color"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "nav.html",
+			"settings":
+			{
+				"buffer_size": 1537,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mainpanel.html",
+			"settings":
+			{
+				"buffer_size": 15205,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "industry_analysis_realtime.html",
+			"settings":
+			{
+				"buffer_size": 8881,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "stock_cci.html",
+			"settings":
+			{
+				"buffer_size": 4784,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "stock_boll.html",
+			"settings":
+			{
+				"buffer_size": 4972,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "stock_ma.html",
+			"settings":
+			{
+				"buffer_size": 5114,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"last_filter": "in",
+		"selected_items":
+		[
+			[
+				"in",
+				"Package Control: Install Package→安装插件"
+			],
+			[
+				"i",
+				"Package Control: Install Package→安装插件"
+			]
+		],
+		"width": 594.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/iFunk/Desktop/QAS/api/templates"
+	],
+	"file_history":
+	[
+		"/C/Users/iFunk/Desktop/QAS/api/templates/stocks_daily_lastday.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/nav-data.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/stock_detail.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/industry_stocks.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/stocks_dailybasic_lastday.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/nav-market.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/nav-industry.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/sw_stocks.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/dailybasic_stocks_lastday.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/stock_daily.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/stock_moneyflow.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/moneyflow_stocks_lastday.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/stocks_fina_income.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/topstocks_concept_stocks.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/realtime_stocks_daily.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/industry_analysis_realtime.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/market_mainpanel.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/market_snmoneyflow.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/nav-strategy.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/index_weekly.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/index_volume_monthly.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/index_volume_weekly.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/index_volume_daily.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/area_stocks.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/concept_stocks.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/data_mainpanel.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/float_stocks.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/footer.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/index.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/index_daily.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/index_datapanel_one.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/industry_analysis_category.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/limit_stocks.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/peg_stocks_period.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/stock_daily_amount_vol.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/forecast_stocks.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/index_datapanel.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/strategy_moneyflow.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/industry_three.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/industry_category.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/industry_analysis_up_vol.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/industry_analysis_up_vol_close.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/sw_indexs_last.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/strategy_mainpanel.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/sw_stocks_level.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/nav-trade.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/tradememo_profit_all.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/market_limits.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/tradememo_stock_profit.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/tradememo_stock_daily.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/tradememo_reason_tradedate_profit.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/tradememo_profit_all_card.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/market_index.html",
+		"/C/Users/iFunk/Desktop/QAS/api/templates/temp",
+		"/C/Users/iFunk/Desktop/QAS/api/stocks_sw.py"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"<script src=\"https://code.jquery.com/jquery-3.3.1.js\"></script>"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"<script src=\"https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js\"></script>"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "nav.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1537,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								675,
+								685
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "mainpanel.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15205,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1334.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "industry_analysis_realtime.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8881,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4048,
+								4048
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 537.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "stock_cci.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4784,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								594,
+								594
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 966.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "stock_boll.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4972,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2653,
+								2653
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1311.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "stock_ma.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2775,
+								2775
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1173.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "QAS.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 313.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

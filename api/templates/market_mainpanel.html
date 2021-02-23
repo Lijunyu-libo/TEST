@@ -1,0 +1,206 @@
+{#  market_mainpanel.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="{{url_for('static', path='/gridly/jquery.gridly.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', path='/gridly/jquery.gridly.css')}}">
+
+	{{js_res|safe}}
+	{{css_res|safe}}
+    <title>QAS量化分析服务</title>
+  </head>
+  <body>  
+  {% include 'nav-market.html' ignore missing %}
+  <div class="container-fluid">
+  <h5>市场分析主面板</h5>
+  <style type="text/css">
+  .gridly {
+    position: relative;
+    width: 100%;
+  }
+  .brick.small {
+    width: 400px;
+    height: 300px;
+  }
+  .brick.middle {
+    width: 400px;
+    height: 400px;
+  }
+  .brick.large {
+    width: 1800px;
+    height: 400px;
+  }
+</style>
+<div class="gridly">
+		  	<div class="brick middle">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今日昨日前日涨停个股数</h5>
+			        <p class="card-text">分析短期市场涨停个股数情况 </p>
+			        <p>{{limits_dict.tradedate_0}}  {{limits_dict.df_limit_u_0_len}}</p>
+			        <p>{{limits_dict.tradedate_1}}  {{limits_dict.df_limit_u_1_len}}</p>
+			        <p>{{limits_dict.tradedate_2}}  {{limits_dict.df_limit_u_2_len}}</p>
+			        <p>{{limits_dict.tradedate_3}}  {{limits_dict.df_limit_u_3_len}}</p>
+			        <p>{{limits_dict.tradedate_4}}  {{limits_dict.df_limit_u_4_len}}</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	<div class="brick middle">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今日昨日前日跌停个股数</h5>
+			        <p class="card-text">分析短期市场跌停个股数情况 </p>
+			        <p>{{limits_dict.tradedate_0}}  {{limits_dict.df_limit_d_0_len}}</p>
+			        <p>{{limits_dict.tradedate_1}}  {{limits_dict.df_limit_d_1_len}}</p>
+			        <p>{{limits_dict.tradedate_2}}  {{limits_dict.df_limit_d_2_len}}</p>
+			        <p>{{limits_dict.tradedate_3}}  {{limits_dict.df_limit_d_3_len}}</p>
+			        <p>{{limits_dict.tradedate_4}}  {{limits_dict.df_limit_d_4_len}}</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	<div class="brick middle">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今日昨日前日跌停个股数</h5>
+			        <p class="card-text">分析短期市场跌停个股数情况 </p>
+			        <p>{{limits_dict.tradedate_0}}  {{limits_dict.df_limit_d_0_len}}</p>
+			        <p>{{limits_dict.tradedate_1}}  {{limits_dict.df_limit_d_1_len}}</p>
+			        <p>{{limits_dict.tradedate_2}}  {{limits_dict.df_limit_d_2_len}}</p>
+			        <p>{{limits_dict.tradedate_3}}  {{limits_dict.df_limit_d_3_len}}</p>
+			        <p>{{limits_dict.tradedate_4}}  {{limits_dict.df_limit_d_4_len}}</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	<div class="brick middle">
+				<p>5日短期市场平均涨停个股数及波动情况</p>
+	  			{{p_script1|safe}}
+				{{p_div1|safe}}
+		  	</div>
+		  	<div class="brick middle">
+				<p>5日短期市场平均跌停个股数及波动情况</p>
+	  			{{p_script2|safe}}
+				{{p_div2|safe}}
+		  	</div>	  		
+</div>
+<script>
+  $('.gridly').gridly({
+    base: 60, // px 
+    gutter: 20, // px
+    columns: 12
+  });
+</script>
+  		<div class="row">
+		  	<div class="col-sm-6">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今日昨日前日涨停个股数</h5>
+			        <p class="card-text">分析短期市场涨停个股数情况 </p>
+			        <p>{{limits_dict.tradedate_0}}  {{limits_dict.df_limit_u_0_len}}</p>
+			        <p>{{limits_dict.tradedate_1}}  {{limits_dict.df_limit_u_1_len}}</p>
+			        <p>{{limits_dict.tradedate_2}}  {{limits_dict.df_limit_u_2_len}}</p>
+			        <p>{{limits_dict.tradedate_3}}  {{limits_dict.df_limit_u_3_len}}</p>
+			        <p>{{limits_dict.tradedate_4}}  {{limits_dict.df_limit_u_4_len}}</p>
+			      </div>
+			    </div>
+		  	</div>
+		  	<div class="col-sm-6">
+		  	    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">今日昨日前日跌停个股数</h5>
+			        <p class="card-text">分析短期市场跌停个股数情况 </p>
+			        <p>{{limits_dict.tradedate_0}}  {{limits_dict.df_limit_d_0_len}}</p>
+			        <p>{{limits_dict.tradedate_1}}  {{limits_dict.df_limit_d_1_len}}</p>
+			        <p>{{limits_dict.tradedate_2}}  {{limits_dict.df_limit_d_2_len}}</p>
+			        <p>{{limits_dict.tradedate_3}}  {{limits_dict.df_limit_d_3_len}}</p>
+			        <p>{{limits_dict.tradedate_4}}  {{limits_dict.df_limit_d_4_len}}</p>
+			      </div>
+			    </div>
+		  	</div>		  			  			  	
+		</div>
+		<br>
+		<hr>
+		<h5>5日涨跌停个股数平均值及走势</h5>
+		<div class="row">
+		  	<div class="col-sm-6">
+				<p>5日短期市场平均涨停个股数及波动情况</p>
+	  			{{p_script1|safe}}
+				{{p_div1|safe}}
+		  	</div>
+		  	<div class="col-sm-6">
+				<p>5日短期市场平均跌停个股数及波动情况</p>
+	  			{{p_script2|safe}}
+				{{p_div2|safe}}
+		  	</div>	  	
+		</div>
+		<br>
+
+   </div>
+<p></p>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+			$('ul.nav > li').click(function (e) {
+			//e.preventDefault();
+			$('ul.nav > li').removeClass('active');
+			$(this).addClass('active');
+			});
+		});
+		</script>
+<!--     <script type="text/javascript">
+		$(document).ready(function(){
+
+		    $('a').click(function(data){
+		        //请求参数
+		        var data = $(this).text();
+		        //
+		        $.ajax({
+		            //请求方式
+		            type : "get",
+		            //请求的媒体类型
+		            contentType: "application/json",
+		            //请求地址
+		            url : "/index/stocks/"+data,
+		            //数据，json字符串
+		            //data : data,
+		            //请求成功
+		            success : function(result) {
+		            	$("#stockscount").text(result.count.toString());
+						var $tdName = $("<td>1111</td>"); //创建第一个td
+						$("#stocksitem").append($tdName);
+		                //alert(result);
+		            },
+		            //请求失败，包含具体的错误信息
+		            error : function(e){
+		                $("#content").text(e.status);
+		                $("#content").text(e.responseText);
+		            }
+		        });
+		    });
+
+		});
+	</script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>

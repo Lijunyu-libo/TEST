@@ -1,0 +1,164 @@
+{#  index_daily.html  #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	{{js_res|safe}}
+	{{css_res|safe}}
+    <title>QAS量化分析服务</title>
+  </head>
+  <body>  
+  {% include 'nav-data.html' ignore missing %}
+  <div class="container-fluid">
+	  	<p>日成交金额走势图（3、5、10、20日平均线）</p> 
+	  	{{p_script|safe}}
+		{{p_div|safe}}
+	   <p></p>  
+		<div class="row">
+			<div class="col-sm-2">
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">指数</h5>
+			        <table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">大盘指数</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+						{% for item in indexlist %}
+					    <tr>
+					      <th scope="row">{{loop.index}}</th>
+ 					      <td><a href="/indexs/volume/{{item}}" data-name="{{item}}" >{{item}}</a>
+					      <!-- <td><a href="javascript:void(0)" id="{{item.index_code}}" data-name="{{item.index_code}}" onClick="indexBut(this)">{{item.index_code}}</a></td> -->
+					      <!-- <td><a href="javascript:void(0)" id="{{item.index_code}}" data-name="{{item.index_code}}">{{item.index_code}}</a></td> -->
+<!-- 					      <td>{{item.name}}</td> -->
+					      <!-- <td><button id="btn_class" >获取成分股</button></td> -->
+					    </tr>
+						{% endfor%}
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go top</a>
+			      </div>
+			    </div>
+	  		</div>
+		  	<div class="col-sm-10">
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">{{indexcode}}  {{indexname}}    <span class="badge badge-secondary">{{count}}</span>
+			        <!-- <span id="stockscount"></span> -->
+			        </h5>
+			        <table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">指数代码</th>	      
+					      <th scope="col">交易日</th>
+					      <th scope="col">今收</th>
+					      <th scope="col">昨收</th>
+					      <th scope="col">涨跌幅（%）</th>
+					      <th scope="col">成交量（手）</th>
+					      <th scope="col">成交额（亿）</th>
+					      <th scope="col">成交额（万）</th>
+					      <th scope="col">昨成交额（万）</th>
+					      <th scope="col">差额（万）</th>
+					      <th scope="col">放量比（%）</th>
+					      <th scope="col">连续放量</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+ 					{% for item in indexdaily %}
+					    <tr>
+					      	<th scope="row">{{loop.index}}</th>
+					      	<td>{{item.ts_code}}</td>
+					      	<td>{{item.trade_date}}</td>
+					      	<td>{{item.close}}</td>
+					      	<td>{{item.pre_close}}</td>
+					      	<td>{{item.pct_chg}}</td>
+					      	<td>{{item.vol}}</td>
+					      	<td>{{item.amount_y}}</td>	
+					      	<td>{{item.amount_w}}</td>
+					      	<td>{{item.pre_amount_w}}</td>
+							<td>{{item.amount_change}}</td>	
+							<td>{{item.pct_amount_change}}</td>
+							<td>{{item.amount_up}}</td>					      						      
+					    </tr>
+					{% endfor%} 
+						<!-- <tr id="stocksitem">						
+						</tr> -->
+					  </tbody>
+					</table>
+			        <a href="#" id="goToTop" class="btn btn-primary">Go Top</a>
+			      </div>
+			    </div>
+		  	</div>
+	</div>
+   </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+	        $('#goToTop a').click(function(){
+	            $('html,body').animate({scrollTop:0},'slow');
+	        });
+	    });
+	</script>
+	    <script>
+		function indexBut(a){
+			var indexcode = $(a).attr("data-name");
+			$("#content").text(indexcode);
+		}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+			$('ul.nav > li').click(function (e) {
+			//e.preventDefault();
+			$('ul.nav > li').removeClass('active');
+			$(this).addClass('active');
+			});
+		});
+		</script>
+<!--     <script type="text/javascript">
+		$(document).ready(function(){
+
+		    $('a').click(function(data){
+		        //请求参数
+		        var data = $(this).text();
+		        //
+		        $.ajax({
+		            //请求方式
+		            type : "get",
+		            //请求的媒体类型
+		            contentType: "application/json",
+		            //请求地址
+		            url : "/index/stocks/"+data,
+		            //数据，json字符串
+		            //data : data,
+		            //请求成功
+		            success : function(result) {
+		            	$("#stockscount").text(result.count.toString());
+						var $tdName = $("<td>1111</td>"); //创建第一个td
+						$("#stocksitem").append($tdName);
+		                //alert(result);
+		            },
+		            //请求失败，包含具体的错误信息
+		            error : function(e){
+		                $("#content").text(e.status);
+		                $("#content").text(e.responseText);
+		            }
+		        });
+		    });
+
+		});
+	</script> -->
+  </body>
+   {% include 'footer.html' ignore missing %}
+</html>
